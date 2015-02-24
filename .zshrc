@@ -54,6 +54,7 @@ export TERM="xterm-256color"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -83,4 +84,3 @@ source $ZSH/oh-my-zsh.sh
 alias omx="omxplayer -o hdmi"
 alias yt="youtube-dl -f best"
 
-source /usr/local/bin/virtualenvwrapper.sh
