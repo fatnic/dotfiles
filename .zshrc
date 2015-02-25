@@ -83,5 +83,4 @@ export LANG=en_GB.UTF-8
 
 alias omx="omxplayer -o hdmi"
 alias yt="youtube-dl -f best"
-alias ls="ls -lah"
-
+alias la="ls -lah"
