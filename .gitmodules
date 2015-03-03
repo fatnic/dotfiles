@@ -19,3 +19,6 @@
 [submodule "tmux/tmux-zoom.git"]
 	path = tmux/tmux-zoom.git
 	url = https://github.com/jipumarino/tmux-zoom.git
+[submodule ".vim/bundle/auto-pairs.git"]
+	path = .vim/bundle/auto-pairs.git
+	url = https://github.com/jiangmiao/auto-pairs.git
