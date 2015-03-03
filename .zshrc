@@ -50,7 +50,7 @@ plugins=(git python pip)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"
-export TERM="xterm-256color"
+export TERM="screen-256color"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
