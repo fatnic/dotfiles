@@ -22,3 +22,5 @@ set shiftwidth=4
 set expandtab
 
 let g:AutoPairsShortcutFastWrap = '<C-w>'
+
+let g:airline_powerline_fonts = 1
