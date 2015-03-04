@@ -45,12 +45,12 @@ ZSH_THEME="eastwood"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python pip)
+plugins=(git terminator pip python tmux virtualenv virtualenvwrapper )
 
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"
-export TERM="screen-256color"
+export TERM="xterm-256color"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

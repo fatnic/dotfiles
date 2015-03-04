@@ -9,6 +9,7 @@ filetype plugin indent on
 source ~/.vim/startup/mappings.vim
 
 set t_Co=256
+set t_ut=
 colorscheme Monokai
 
 set number
@@ -26,4 +27,4 @@ set expandtab
 
 let g:AutoPairsShortcutFastWrap = '<C-w>'
 
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
