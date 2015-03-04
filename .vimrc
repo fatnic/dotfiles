@@ -7,6 +7,7 @@ syntax on
 filetype plugin indent on
 
 source ~/.vim/startup/mappings.vim
+source ~/.vim/startup/pluginoptions.vim
 
 set t_Co=256
 set t_ut=
@@ -25,6 +26,3 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-let g:AutoPairsShortcutFastWrap = '<C-w>'
-
-let NERDTreeShowHidden = 1
