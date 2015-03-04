@@ -5,6 +5,12 @@ let mapleader=","
 no <C-down> ddp
 no <C-up> ddkP
 
+" Move around split windows with Ctrl-movement keys
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
+
 " Tab navigation
 nmap <Leader>n :tabnew<CR>
 nmap <Leader>[ :tabprevious<CR>
