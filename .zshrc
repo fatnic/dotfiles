@@ -80,7 +80,4 @@ export LANG=en_GB.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias omx="omxplayer -o hdmi"
-alias yt="youtube-dl -f best"
-alias la="ls -lah"
+source ~/dotfiles/.alias
