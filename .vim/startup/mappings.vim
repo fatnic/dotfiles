@@ -18,3 +18,6 @@ nmap <Leader>] :tabnext<CR>
 
 " Run scripts quicly
 nmap <Leader>r :!python %<CR>
+
+" Toggle file navigation
+map <c-f> <ESC>:NERDTreeToggle<CR>
