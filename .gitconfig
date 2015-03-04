@@ -3,3 +3,6 @@
 [user]
 	email = fatnic388@gmail.com
 	name = Dave Nicholson
+[credential]
+	helper = cache
+    timeout = 3600
