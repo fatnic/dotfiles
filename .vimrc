@@ -11,7 +11,7 @@ source ~/.vim/startup/pluginoptions.vim
 
 set t_Co=256
 set t_ut=
-colorscheme Monokai
+colorscheme devbox-dark-256
 
 set number
 
