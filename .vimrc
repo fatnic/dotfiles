@@ -14,6 +14,7 @@ set t_ut=
 colorscheme ego
 
 set number
+set numberwidth=3
 
 set laststatus=2
 set encoding=utf-8
@@ -25,5 +26,9 @@ set nowrap
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set softtabstop=4
 
 set hlsearch
+set incsearch
+set ignorecase
+set smartcase
