@@ -13,11 +13,14 @@ map <c-l> <c-w>l
 
 " Tab navigation
 nmap <Leader>n :tabnew<CR>
-nmap <Leader>[ :tabprevious<CR>
-nmap <Leader>] :tabnext<CR>
+nnoremap <Leader>[ :tabprevious<CR>
+nnoremap <Leader>] :tabnext<CR>
 
 " Run scripts quicly
 nmap <Leader>r :!python %<CR>
 
 " Toggle file navigation
 map <c-f> <ESC>:NERDTreeToggle<CR>
+
+" Disable seach highlights on enter 
+nnoremap <cr> :nohlsearch<cr>

@@ -11,7 +11,7 @@ source ~/.vim/startup/pluginoptions.vim
 
 set t_Co=256
 set t_ut=
-colorscheme devbox-dark-256
+colorscheme ego
 
 set number
 
@@ -26,3 +26,4 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set hlsearch
