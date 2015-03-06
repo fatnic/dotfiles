@@ -1,3 +1,4 @@
 alias omx="omxplayer -b -o hdmi"
 alias yt="youtube-dl -f best"
 alias la="ls -lah"
+alias t="tmux"
