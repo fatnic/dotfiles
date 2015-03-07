@@ -6,12 +6,14 @@ execute pathogen#helptags()
 syntax on
 filetype plugin indent on
 
+autocmd! bufwritepost .vimrc source %
+
 source ~/.vim/startup/mappings.vim
 source ~/.vim/startup/pluginoptions.vim
 
 set t_Co=256
 set t_ut=
-colorscheme ego
+colorscheme molokai
 
 set number
 set numberwidth=3
