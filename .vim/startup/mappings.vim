@@ -17,7 +17,7 @@ nnoremap <Leader>[ :tabprevious<CR>
 nnoremap <Leader>] :tabnext<CR>
 
 " Run scripts quicly
-nmap <Leader>r :!python %<CR>
+nmap <Leader>r <Esc>:w<cr>:!python %<CR>
 
 " Toggle file navigation
 map <c-f> <ESC>:NERDTreeToggle<CR>
