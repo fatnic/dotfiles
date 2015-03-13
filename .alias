@@ -1,7 +1,0 @@
-alias omx="omxplayer -b -o hdmi"
-alias yt="youtube-dl -f best"
-alias la="ls -lAhG"
-alias ld="ls -ld */"
-alias t="tmux"
-alias apti="sudo apt-get install"
-alias p="feh -ZFx"

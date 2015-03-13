@@ -80,4 +80,10 @@ export LANG=en_GB.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/dotfiles/.alias
+alias omx="omxplayer -b -o hdmi"
+alias yt="youtube-dl -f best"
+alias la="ls -lAhG"
+alias ld="ls -ld */"
+alias t="tmux"
+alias apti="sudo apt-get install"
+alias p="feh -ZFx"
