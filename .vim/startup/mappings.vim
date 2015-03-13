@@ -24,3 +24,6 @@ map <c-f> <ESC>:NERDTreeToggle<CR>
 
 " Disable seach highlights on enter 
 nnoremap <cr> :nohlsearch<cr>
+
+" Create new line mid sentance
+inoremap <C-o> <Esc>o
