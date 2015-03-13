@@ -8,9 +8,6 @@ filetype plugin indent on
 
 autocmd! bufwritepost .vimrc source %
 
-source ~/.vim/startup/mappings.vim
-source ~/.vim/startup/pluginoptions.vim
-
 set t_Co=256
 set t_ut=
 colorscheme molokai
@@ -34,3 +31,44 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+
+" ***********************************************
+"              KEYBOARD MAPPINGS 
+" *********************************************** 
+
+" Change the leader to , 
+let mapleader=","
+
+" Move around split windows with Ctrl-movement keys
+map <C-j> <c-w>j
+map <c-k> <c-w>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
+
+" Tab navigation
+nmap <Leader>n :tabnew<CR>
+nnoremap <Leader>[ :tabprevious<CR>
+nnoremap <Leader>] :tabnext<CR>
+
+" Run scripts quicly
+nmap <Leader>r <Esc>:w<cr>:!python %<CR>
+
+" Toggle file navigation
+map <c-f> <ESC>:NERDTreeToggle<CR>
+
+" Disable seach highlights on enter 
+nnoremap <cr> :nohlsearch<cr>
+
+" Create new line mid sentance
+inoremap <C-o> <Esc>o
+
+
+" ***********************************************
+"              PLUGIN OPTIONS
+" ***********************************************
+
+" Autopairs
+let g:AutoPairsShortcutFastWrap = '<C-w>'
+"NERDTree
+let NERDTreeShowHidden = 1
