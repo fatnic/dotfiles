@@ -41,24 +41,24 @@ set smartcase
 let mapleader=","
 
 " Move around split windows with Ctrl-movement keys
-map <C-j> <c-w>j
-map <c-k> <c-w>k
-map <c-h> <c-w>h
-map <c-l> <c-w>l
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-h> <C-w>h
+map <C-l> <C-w>l
 
 " Tab navigation
-nmap <Leader>n :tabnew<CR>
-nnoremap <Leader>[ :tabprevious<CR>
-nnoremap <Leader>] :tabnext<CR>
+nmap <Leader>n :tabnew<Cr>
+nnoremap <C-[> :tabprevious<Cr>
+nnoremap <C-]> :tabnext<Cr>
 
 " Run scripts quicly
-nmap <Leader>r <Esc>:w<cr>:!python %<CR>
+nmap <Leader>r <Esc>:w<Cr>:!python %<Cr>
 
 " Toggle file navigation
-map <c-f> <ESC>:NERDTreeToggle<CR>
+map <C-f> <ESC>:NERDTreeToggle<Cr>
 
 " Disable seach highlights on enter 
-nnoremap <cr> :nohlsearch<cr>
+nnoremap <Cr> :nohlsearch<Cr>
 
 " Create new line mid sentance
 inoremap <C-o> <Esc>o
@@ -69,6 +69,7 @@ inoremap <C-o> <Esc>o
 " ***********************************************
 
 " Autopairs
-let g:AutoPairsShortcutFastWrap = '<C-w>'
+let g:AutoPairsShortcutFastWrap = '<C-;>'
 "NERDTree
 let NERDTreeShowHidden = 1
+
