@@ -72,4 +72,8 @@ inoremap <C-o> <Esc>o
 let g:AutoPairsShortcutFastWrap = '<C-;>'
 "NERDTree
 let NERDTreeShowHidden = 1
-
+" Flake8
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+autocmd BufWritePost *.py call Flake8()
+let g:flake8_show_in_gutter=1
+let g:flake8_show_in_file=1
