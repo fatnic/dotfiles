@@ -5,7 +5,7 @@ export ZSH=/home/pi/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="tjkirch"
+ZSH_THEME="juanghurtado"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,7 +45,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git python django pip)
 
 # User configuration
 
@@ -88,3 +88,8 @@ alias t="tmux"
 alias apti="sudo apt-get install"
 alias p="feh -ZFx"
 alias pr="feh -ZFx --randomize"
+
+# Setup for PyENV
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
