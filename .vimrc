@@ -10,7 +10,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'davidhalter/jedi-vim' "pip install jedi
 Plugin 'lambdalisue/vim-pyenv'
 
 call vundle#end()
