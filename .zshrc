@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/pi/.oh-my-zsh
+export ZSH=/home/dave/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="juanghurtado"
+ZSH_THEME="eastwood"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,7 +54,6 @@ export TERM="xterm-256color"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/bin/virtualenvwrapper.sh
 
 # You may need to manually set your language environment
 export LANG=en_GB.UTF-8
@@ -80,14 +79,11 @@ export LANG=en_GB.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias omx="omxplayer -b -o hdmi"
 alias yt="youtube-dl -f best"
 alias la="ls -lAhG"
 alias ld="ls -ld */"
 alias t="tmux"
 alias apti="sudo apt-get install"
-alias p="feh -ZFx"
-alias pr="feh -ZFx --randomize"
 
 # Setup for PyENV
 export PYENV_ROOT="$HOME/.pyenv"
