@@ -1,7 +1,21 @@
 set nocompatible
 
-execute pathogen#infect()
-execute pathogen#helptags()
+" START VUNDLE
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'bling/vim-airline'
+Plugin 'ervandew/supertab'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'lambdalisue/vim-pyenv'
+
+call vundle#end()
+" END VUNDLE
+
 
 syntax on
 filetype plugin indent on
@@ -40,36 +54,13 @@ set smartcase
 " Change the leader to , 
 let mapleader=","
 
-" Move around split windows with Ctrl-movement keys
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-h> <C-w>h
-map <C-l> <C-w>l
-
-" Tab navigation
-nmap <Leader>n :tabnew<Cr>
-nnoremap <C-[> :tabprevious<Cr>
-nnoremap <C-]> :tabnext<Cr>
-
-" Run scripts quicly
-nmap <Leader>r <Esc>:w<Cr>:!python %<Cr>
-
-" Toggle file navigation
-map <C-f> <ESC>:NERDTreeToggle<Cr>
-
-" Disable seach highlights on enter 
+"" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
 
-" Create new line mid sentance
-inoremap <C-o> <Esc>o
-
-
 
 " ***********************************************
-"              PLUGIN OPTIONS
+"               PLUGIN STUFF
 " ***********************************************
-
-" Autopairs
-let g:AutoPairsShortcutFastWrap = '<C-;>'
-"NERDTree
-let NERDTreeShowHidden = 1
+" Don't show seperators
+let g:airline_left_sep=''
+let g:airline_right_sep=''
