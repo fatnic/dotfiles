@@ -16,6 +16,3 @@ alias la="ls -lAhG"
 alias ld="ls -ld */"
 alias t="tmux"
 alias apti="sudo apt-get install"
-
-
-eval "$(pyenv init -)"
