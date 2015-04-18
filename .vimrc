@@ -58,6 +58,9 @@ let mapleader=","
 "" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
 
+" Toggle NERDTree
+nmap <C-f> :NERDTreeToggle<Cr>
+
 
 " ***********************************************
 "               PLUGIN STUFF
