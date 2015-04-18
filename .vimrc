@@ -11,6 +11,7 @@ Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim' "pip install jedi
 Plugin 'lambdalisue/vim-pyenv'
 
