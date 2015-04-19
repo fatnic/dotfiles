@@ -37,7 +37,7 @@ autocmd! bufwritepost .vimrc source %
 
 set t_Co=256
 set t_ut=
-colorscheme molokai
+colorscheme Tomorrow-Night-Eighties
 
 set number
 set numberwidth=3
