@@ -6,21 +6,27 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'flazz/vim-colorschemes'
+
 Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+
 Plugin 'ervandew/supertab'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdtree'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
 Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim' "pip install jedi
 Plugin 'lambdalisue/vim-pyenv'
 
 call vundle#end()
 " END VUNDLE
-
 
 syntax on
 filetype plugin indent on
