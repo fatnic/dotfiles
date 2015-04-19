@@ -59,6 +59,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+set nobackup
+set nowb
+set noswapfile
 
 " ***********************************************
 "              KEYBOARD MAPPINGS 
