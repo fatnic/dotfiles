@@ -22,7 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic' "pip install flake8
 Plugin 'davidhalter/jedi-vim' "pip install jedi
 Plugin 'django.vim'
 Plugin 'lambdalisue/vim-pyenv'
