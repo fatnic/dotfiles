@@ -21,8 +21,10 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim' "pip install jedi
+Plugin 'django.vim'
 Plugin 'lambdalisue/vim-pyenv'
 
 call vundle#end()
