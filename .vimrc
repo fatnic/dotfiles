@@ -89,3 +89,5 @@ map <leader>t<leader> :tabnext<cr>
 " Don't show seperators
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+" Supertab from top to bottom
+let g:SuperTabDefaultCompletionType = '<c-n>'
