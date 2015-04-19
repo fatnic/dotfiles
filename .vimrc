@@ -16,7 +16,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
