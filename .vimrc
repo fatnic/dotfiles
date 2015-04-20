@@ -76,13 +76,6 @@ nnoremap <Cr> :nohlsearch<Cr>
 " Toggle NERDTree
 nmap <C-f> :NERDTreeToggle<Cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext<cr> 
-
 " ***********************************************
 "               PLUGIN STUFF
 " ***********************************************
@@ -91,3 +84,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 " Supertab from top to bottom
 let g:SuperTabDefaultCompletionType = '<c-n>'
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'"
