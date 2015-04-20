@@ -90,7 +90,7 @@ nmap <leader>h :bprevious<CR>
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
-nmap <leader>bl :ls<CR>"
+nmap <leader>bl :ls<CR>
 
 " ***********************************************
 "               PLUGIN STUFF
