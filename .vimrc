@@ -70,6 +70,9 @@ set noswapfile
 " Change the leader to , 
 let mapleader=","
 
+" Run current file in python
+nmap <leader>r :!python %<cr>
+
 "" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
 
