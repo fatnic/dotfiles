@@ -12,6 +12,7 @@ Plugin 'flazz/vim-colorschemes'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'thinca/vim-quickrun'
 
 Plugin 'ervandew/supertab'
 Plugin 'mattn/emmet-vim'
