@@ -95,6 +95,9 @@ nmap <leader>bl :ls<CR>
 " ***********************************************
 "               PLUGIN STUFF
 " ***********************************************
+"
+" **** AIRLINE ****
+"
 " Don't show seperators
 let g:airline_left_sep=''
 let g:airline_right_sep=''
