@@ -101,9 +101,12 @@ nmap <leader>bl :ls<CR>
 " Don't show seperators
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-" Supertab from top to bottom
-let g:SuperTabDefaultCompletionType = '<c-n>'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
+
+" **** SUPERTAB ****
+"
+" Supertab from top to bottom
+let g:SuperTabDefaultCompletionType = '<c-n>'
