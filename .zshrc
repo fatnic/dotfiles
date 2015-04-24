@@ -15,5 +15,8 @@ alias yt="youtube-dl -f best"
 alias la="ls -lAhG"
 alias ld="ls -ld */"
 alias t="tmux"
+
 alias apti="sudo apt-get install"
+alias aptu="sudo apt-get update"
+
 alias activate="source venv/bin/activate"
