@@ -113,3 +113,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'"
 "
 " Supertab from top to bottom
 let g:SuperTabDefaultCompletionType = '<c-n>'
+
+" **** Ctrl-P ****
+"
+" Ignore directories
+ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc 
