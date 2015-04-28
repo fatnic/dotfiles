@@ -24,7 +24,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/syntastic' "pip install flake8
 Plugin 'davidhalter/jedi-vim' "pip install jedi
-Plugin 'django.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+"Plugin 'django.vim'
 Plugin 'lambdalisue/vim-pyenv'
 
 call vundle#end()
