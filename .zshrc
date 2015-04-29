@@ -19,5 +19,5 @@ alias t="tmux"
 alias apti="sudo apt-get install"
 alias aptu="sudo apt-get update"
 
-alias mkvenv="virtualenv .venv"
+alias mkvenv="virtualenv .venv && activate"
 alias activate="source .venv/bin/activate"
