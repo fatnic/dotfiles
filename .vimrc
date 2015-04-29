@@ -118,4 +118,4 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 " **** Ctrl-P ****
 "
 " Ignore directories
- set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc 
+ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db
