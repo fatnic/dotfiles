@@ -119,4 +119,6 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 " **** Ctrl-P ****
 "
 " Ignore directories
- set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['.venv']
