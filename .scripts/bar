@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 Active() {
     xtitle | head -c 60
 }
@@ -20,7 +19,7 @@ Volume() {
 
 while true
 do
-    echo "%{c}$(Active) %{r}V: $(Volume) B: $(Battery) $(TimeDate)"
+    echo "%{c}$(Active) %{r}V: $(Volume)    B: $(Battery)    $(TimeDate) "
     sleep .25
-done | lemonbar -p
+done | lemonbar -p -g x20 -B "#30000000"
 

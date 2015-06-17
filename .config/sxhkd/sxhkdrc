@@ -93,7 +93,7 @@ super + Escape
 # Media Keys
 
 XF86Audio{Lower,Raise}Volume
-    amixer set Master 5{-,+}
+    amixer set Master 1dB{-,+}
 
 XF86AudioMute
     amixer set Master toggle
