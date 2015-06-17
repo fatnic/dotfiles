@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+Active() {
+    xtitle | head -c 60
+}
+
+TimeDate() { 
+    date +"%b %d %H:%M" 
+}
+
+Battery() {
+    acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g'
+}
+
+Volume() {
+    awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master)
+}
+
+
+while true
+do
+    echo "%{c}$(Active) %{r}V: $(Volume) B: $(Battery) $(TimeDate)"
+    sleep .25
+done | lemonbar -p
+
