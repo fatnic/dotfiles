@@ -45,6 +45,7 @@ path=(
   /usr/local/{bin,sbin}
   /usr/bin
   /usr/bin/X11
+  /home/dave/.scripts
   $path
 )
 
