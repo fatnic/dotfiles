@@ -1,5 +1,19 @@
 #!/bin/bash
 
+BLUE="#FF5F819D"
+LIGHTBLUE="#FF81A2BE"
+RED="#FFA54242"
+YELLOW="#FFF0C674"
+ORANGE="#FFDE935F"
+MAGENTA="#FF85678F"
+TEAL="#FF5E8D87"
+LIGHTGREY="#FFC5C8C6"
+DARKGREY="#FF707880"
+GREEN="#FF8C9440"
+PURPLE="#FF9547C9"
+BG="#FF151515"
+MIDDLE="#FF373B41"
+
 Active() {
     xtitle | head -c 60
 }
@@ -9,17 +23,19 @@ TimeDate() {
 }
 
 Battery() {
-    acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g'
+    BATPER=$(acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g')
+    echo "⚡ %{F$BLUE}$BATPER% %{F-}"
 }
 
 Volume() {
-    awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master)
+    AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
+    echo "♫ %{F$YELLOW}$AUDIO_VOLUME %{F-}"
 }
 
 
 while true
 do
-    echo "%{c}$(Active) %{r}V: $(Volume)    B: $(Battery)    $(TimeDate) "
+    echo -e "%{c}$(Active) %{r}$(Volume)   $(Battery)    $(TimeDate) "
     sleep .25
-done | lemonbar -p -g x20 -B "#30000000"
+done | lemonbar -p -g x20 -B "#80000000" -f "xft:Monaco:size=10"
 
