@@ -13,7 +13,7 @@ LIGHTGREY="#FFC5C8C6"
 DARKGREY="#FF707880"
 GREEN="#FF8C9440"
 PURPLE="#FF9547C9"
-BG="#99151515"
+BG="#88151515"
 MIDDLE="#FF373B41"
 
 Active() {
@@ -56,16 +56,32 @@ WiFi() {
     WIFI_COL="$GREEN"
     if [ -z $WIFI_SSID ]; then WIFI_COL="$DARKGREY"; fi
     #if [ -z $WIFI_ACTIVE ]; then WIFI_COL="$RED"; fi
-    echo "%{F$WIFI_COL}♻%{F-} $WIFI_SSID"
+    echo "%{F$WIFI_COL}⇅%{F-} $WIFI_SSID"
 }
 
 Windows() {
-    echo ""
+    WIN_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | sed '5d')
+    WIN_INFO=""
+    for window in $WIN_STATUS; do
+        case $window in
+            O*|F*) WIN_ICON="★"; WIN_COLOUR="-";;
+            o*) WIN_ICON="☆"; WIN_COLOUR="-" ;;
+            f*) WIN_ICON="☆"; WIN_COLOUR="$DARKGREY";;
+        esac
+        WIN_INFO="$WIN_INFO%{F$WIN_COLOUR}$WIN_ICON%{F-}"
+    done
+
+    echo "$WIN_INFO"
+}
+
+Updates() {
+    UP_COUNT=$(checkupdates | wc -l)
+    echo "$UP_COUNT"
 }
 
 while true
 do
     echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(WiFi)   $(Volume)   $(Battery)             $(TimeDate) "
     sleep .25
-done | lemonbar -p -g x20 -B $BG -f "xft:Monaco:size=10"
+done | lemonbar -p -g 1343x20+12+12 -B $BG -f "xft:Inconsolata:size=10"
 
