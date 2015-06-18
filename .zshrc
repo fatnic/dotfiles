@@ -16,8 +16,5 @@ alias la="ls -lAhG"
 alias ld="ls -ld */"
 alias t="tmux"
 
-alias apti="sudo apt-get install"
-alias aptu="sudo apt-get update"
-
 alias mkvenv="virtualenv .venv && activate"
 alias activate="source .venv/bin/activate"
