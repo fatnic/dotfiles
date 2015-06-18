@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# Requires lemonbar-xft-git from AUR
+
 BLUE="#FF5F819D"
 LIGHTBLUE="#FF81A2BE"
-RED="#FFA54242"
+RED="#FFEF0303"
 YELLOW="#FFF0C674"
 ORANGE="#FFDE935F"
 MAGENTA="#FF85678F"
@@ -23,50 +25,38 @@ TimeDate() {
 }
 
 Battery() {
-    # TODO: Make icon change color depending on charging status
-    # GREEN: Full
-    # YELLOW: Discharging
-    # RED: Bellow 10%
-    # BLUE: Charging
     BATTERY_PERCENTAGE=$(acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g')
     BATTERY_STATUS=$( acpi --battery | tail -n 1 | cut -d" " -f 3 | sed 's/,$//' )
+    BATTERY_SYMBOL="⚡"
 
-
-    if [ $BATTERY_PERCENTAGE -eq 100 ]; then
-        BAT_COL="$GREEN"
-    fi
+    if [ $BATTERY_PERCENTAGE -eq 100 ]; then BAT_COL="$GREEN"; fi
 
     case $BATTERY_STATUS in
-        'Charging') BAT_COL="$BLUE"
-                    ;;
-        'Discharging') BAT_COL="$YELLOW"
-                       ;;
-        *) BAT_COL="-"
-           ;;
+           'Charging') BAT_COL="$BLUE" ;;
+        'Discharging') BAT_COL="$YELLOW" ;;
+                    *) BAT_COL="-" ;;
     esac
-    if [ $BATTERY_PERCENTAGE -lt 11 ]; then
-        BAT_COL="$RED"
-    fi
+    
+    if [ $BATTERY_PERCENTAGE -lt 11 ]; then BAT_COL="$RED"; fi
 
-    echo "%{F$BAT_COL}⚡%{F-} $BATTERY_PERCENTAGE%"
+    echo "%{F$BAT_COL}$BATTERY_SYMBOL%{F-} $BATTERY_PERCENTAGE%"
 }
 
 Volume() {
-    
     AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
     AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
-    if [ $AUDIO_STATUS == "on" ]; then
-        VOL_COL="-"
-    else
-        VOL_COL="$RED"        
-    fi
+    VOL_COL="$YELLOW"
+    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$RED"; fi
     echo "%{F$VOL_COL}♫%{F-} $AUDIO_VOLUME"
 }
 
+Windows() {
+    echo ""
+}
 
 while true
 do
-    echo -e "%{c}$(Active) %{r}$(Volume)   $(Battery)    $(TimeDate) "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Volume)   $(Battery)    $(TimeDate) "
     sleep .25
-done | lemonbar -p -g x20 -B "#80000000" -f "xft:Monaco:size=10"
+done | lemonbar -p -g x20 -B $BG -f "xft:Monaco:size=10,xft:Monaco:size=11"
 
