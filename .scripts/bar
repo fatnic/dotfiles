@@ -13,7 +13,7 @@ LIGHTGREY="#FFC5C8C6"
 DARKGREY="#FF707880"
 GREEN="#FF8C9440"
 PURPLE="#FF9547C9"
-BG="#FF151515"
+BG="#99151515"
 MIDDLE="#FF373B41"
 
 Active() {
@@ -21,7 +21,7 @@ Active() {
 }
 
 TimeDate() { 
-    date +"%A %B %d %H:%M" 
+    date +"%A %B %d, %H:%M" 
 }
 
 Battery() {
@@ -37,7 +37,7 @@ Battery() {
                     *) BAT_COL="-" ;;
     esac
     
-    if [ $BATTERY_PERCENTAGE -lt 11 ]; then BAT_COL="$RED"; fi
+    if [ $BATTERY_PERCENTAGE -lt 11 ] && [ $BATTERY_STATUS == 'Discharging' ]; then BAT_COL="$RED"; fi
 
     echo "%{F$BAT_COL}$BATTERY_SYMBOL%{F-} $BATTERY_PERCENTAGE%"
 }
@@ -46,8 +46,17 @@ Volume() {
     AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
     AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
     VOL_COL="$YELLOW"
-    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$RED"; fi
+    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$DARKGREY"; AUDIO_VOLUME=""; fi
     echo "%{F$VOL_COL}♫%{F-} $AUDIO_VOLUME"
+}
+
+WiFi() {
+    WIFI_SSID=$(iwgetid -r)
+    #WIFI_ACTIVE=$(ip link list | grep wlp2s0)
+    WIFI_COL="$GREEN"
+    if [ -z $WIFI_SSID ]; then WIFI_COL="$DARKGREY"; fi
+    #if [ -z $WIFI_ACTIVE ]; then WIFI_COL="$RED"; fi
+    echo "%{F$WIFI_COL}♻%{F-} $WIFI_SSID"
 }
 
 Windows() {
@@ -56,7 +65,7 @@ Windows() {
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Volume)   $(Battery)    $(TimeDate) "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(WiFi)   $(Volume)   $(Battery)             $(TimeDate) "
     sleep .25
-done | lemonbar -p -g x20 -B $BG -f "xft:Monaco:size=10,xft:Monaco:size=11"
+done | lemonbar -p -g x20 -B $BG -f "xft:Monaco:size=10"
 
