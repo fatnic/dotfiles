@@ -19,17 +19,29 @@ Active() {
 }
 
 TimeDate() { 
-    date +"%b %d %H:%M" 
+    date +"%A %B %d %H:%M" 
 }
 
 Battery() {
+    # TODO: Make icon change color depending on charging status
+    # GREEN: Full
+    # YELLOW: Discharging
+    # RED: Bellow 10%
+    # BLUE: Charging
     BATPER=$(acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g')
     echo "⚡ %{F$BLUE}$BATPER% %{F-}"
 }
 
 Volume() {
+    
     AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
-    echo "♫ %{F$YELLOW}$AUDIO_VOLUME %{F-}"
+    AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
+    if [ $AUDIO_STATUS == "on" ]; then
+        VOL_COL="-"
+    else
+        VOL_COL="$RED"        
+    fi
+    echo "%{F$VOL_COL}♫%{F-} %{F$YELLOW}$AUDIO_VOLUME %{F-}"
 }
 
 
