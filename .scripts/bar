@@ -28,8 +28,27 @@ Battery() {
     # YELLOW: Discharging
     # RED: Bellow 10%
     # BLUE: Charging
-    BATPER=$(acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g')
-    echo "⚡ %{F$BLUE}$BATPER% %{F-}"
+    BATTERY_PERCENTAGE=$(acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g')
+    BATTERY_STATUS=$( acpi --battery | tail -n 1 | cut -d" " -f 3 | sed 's/,$//' )
+
+
+    if [ $BATTERY_PERCENTAGE -eq 100 ]; then
+        BAT_COL="$GREEN"
+    fi
+
+    case $BATTERY_STATUS in
+        'Charging') BAT_COL="$BLUE"
+                    ;;
+        'Discharging') BAT_COL="$YELLOW"
+                       ;;
+        *) BAT_COL="-"
+           ;;
+    esac
+    if [ $BATTERY_PERCENTAGE -lt 11 ]; then
+        BAT_COL="$RED"
+    fi
+
+    echo "%{F$BAT_COL}⚡%{F-} $BATTERY_PERCENTAGE%"
 }
 
 Volume() {
@@ -41,7 +60,7 @@ Volume() {
     else
         VOL_COL="$RED"        
     fi
-    echo "%{F$VOL_COL}♫%{F-} %{F$YELLOW}$AUDIO_VOLUME %{F-}"
+    echo "%{F$VOL_COL}♫%{F-} $AUDIO_VOLUME"
 }
 
 
