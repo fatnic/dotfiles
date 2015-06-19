@@ -1,6 +1,9 @@
 xset fp+ ~/.fonts 
 xset fp rehash
 
+synclient TapButton2=3
+synclient TapButton3=2
+
 dropbox &
 compton &
 

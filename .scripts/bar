@@ -75,7 +75,7 @@ Windows() {
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(WiFi)   $(Volume)   $(Battery)             $(TimeDate) "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(WiFi)  $(Volume)  $(Battery)         $(TimeDate) "
     sleep .25
 done | lemonbar -p -g 1343x20+12+12 -B $BG -f "xft:Monaco:size=10"
 
