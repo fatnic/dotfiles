@@ -9,14 +9,14 @@ DARKGREY="#FF707880"
 GREEN="#FF7CFC00"
 
 BG="#88151515"
-FG="#FFFFFFFF"
+FG="#CCFFFFFF"
 
 Active() {
     xtitle | head -c 60
 }
 
 TimeDate() { 
-    date +"%A %B %d, %H:%M" 
+    echo "$(date +"%A %B %d")   %{T3}$(date +"%H:%M")%{T}"
 }
 
 Battery() {
@@ -78,6 +78,6 @@ Updates() {
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)  $(WiFi)  $(Volume)  $(Battery)      $(TimeDate) "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)  $(WiFi)  $(Volume)  $(Battery)      $(TimeDate)  "
     sleep .25
-done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Monaco:size=10" -f "FontAwesome:style=Regular:size=11"
+done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Ubuntu:style=Regular::size=10" -f "FontAwesome:style=Regular:size=11" -f "Ubuntu:style=Bold:size=10" 
