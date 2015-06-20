@@ -11,8 +11,8 @@ super + w
 super + t
 	bspc desktop -l next
 
-super + b
-	bspc desktop -B
+# super + b
+# 	bspc desktop -B
 
 super + {s,f}
 	bspc window -t {floating,fullscreen}
@@ -23,11 +23,11 @@ super + {grave,Tab}
 super + apostrophe
 	bspc window -s last
 
-#super + {o,i}
-#	bspc control --record-history off; \
-#	bspc window {older,newer} -f; \
-#	bspc control --record-history on
-#
+super + {o,i}
+	bspc control --record-history off; \
+	bspc window {older,newer} -f; \
+	bspc control --record-history on
+
 super + y
 	bspc window -w last.manual
 
@@ -83,7 +83,7 @@ super + Return
 super + space
 	dmenu_run
 
-super + o
+super + b
     firefox
 
 # make sxhkd reload its configuration files:

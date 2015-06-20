@@ -1,10 +1,10 @@
 URxvt*termName:rxvt-unicode-256color
 
 Xft.antialias:  true
-!Xft.autohint:   true
+Xft.autohint:   true
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
-!Xft.lcdfilter:  lcdlight
+Xft.lcdfilter:  lcdlight
 Xft.rgba:       rgb
 Xft.dpi:        96
 

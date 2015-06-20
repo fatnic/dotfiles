@@ -3,18 +3,13 @@
 # Requires lemonbar-xft-git from AUR
 
 BLUE="#FF5F819D"
-LIGHTBLUE="#FF81A2BE"
 RED="#FFEF0303"
 YELLOW="#FFF0C674"
-ORANGE="#FFDE935F"
-MAGENTA="#FF85678F"
-TEAL="#FF5E8D87"
-LIGHTGREY="#FFC5C8C6"
 DARKGREY="#FF707880"
 GREEN="#FF7CFC00"
-PURPLE="#FF9547C9"
+
 BG="#BB151515"
-MIDDLE="#FF373B41"
+FG="#FFFFFFFF"
 
 Active() {
     xtitle | head -c 60
@@ -53,7 +48,7 @@ WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$GREEN"
     if [ -z $WIFI_SSID ]; then WIFI_COL="$DARKGREY"; fi
-    echo "%{F$WIFI_COL}⇅%{F-} $WIFI_SSID"
+    echo "%{F$WIFI_COL}⇅%{F-}"
 }
 
 Windows() {
@@ -72,15 +67,14 @@ Windows() {
 }
 
 Updates() {
-    UP_COUNT=$(cat ~/.update_count)
+    UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
     UP_COLOUR="$BLUE"
     if [ $UP_COUNT == 0 ]; then UP_COUNT=""; UP_COLOUR="$DARKGREY"; fi
-    echo "%{F$UP_COLOUR}⟲ %{F-}$UP_COUNT"
+    echo "%{F$UP_COLOUR}⟲%{F-}"
 }
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)   $(WiFi)  $(Volume)  $(Battery)         $(TimeDate) "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)  $(WiFi)  $(Volume)  $(Battery)         $(TimeDate) "
     sleep .25
-done | lemonbar -p -g 1343x20+12+12 -B $BG -f "xft:Monaco:size=10"
-
+done | lemonbar -p -g 1343x20+12+12 -B $BG -F $FG -f "xft:size=10"
