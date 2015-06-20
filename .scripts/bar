@@ -2,13 +2,13 @@
 
 # Requires lemonbar-xft-git from AUR
 
-BLUE="#FF5F819D"
+BLUE="#FF00C5CD"
 RED="#FFEF0303"
 YELLOW="#FFF0C674"
-DARKGREY="#FF707880"
+DARKGREY="#FF555555"
 GREEN="#FF7CFC00"
 
-BG="#88151515"
+BG="#00151515"
 FG="#CCFFFFFF"
 
 Active() {
@@ -63,7 +63,7 @@ Windows() {
             o*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="-" ;;
             f*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="$DARKGREY";;
         esac
-        WIN_INFO="$WIN_INFO %{F$WIN_COLOUR}$WIN_ICON%{F-}"
+        WIN_INFO="$WIN_INFO %{F$WIN_COLOUR}%{T4}$WIN_ICON%{T}%{F-}"
     done
 
     echo "$WIN_INFO"
@@ -72,12 +72,12 @@ Windows() {
 Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
     UP_COLOUR="$BLUE"
-    if [ $UP_COUNT == 0 ]; then UP_COUNT=""; UP_COLOUR="$DARKGREY"; fi
-    echo "%{F$UP_COLOUR}%{T2}%{T}%{F-}"
+    UP_ICON=""
+    if [ ! $UP_COUNT == 0 ]; then echo "%{F$BLUE}$UP_ICON%{F-}"; fi
 }
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)  $(WiFi)  $(Volume)  $(Battery)      $(TimeDate)  "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)    $(WiFi)    $(Volume)    $(Battery)      $(TimeDate)  "
     sleep .25
-done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Ubuntu:style=Regular::size=10" -f "FontAwesome:style=Regular:size=11" -f "Ubuntu:style=Bold:size=10" 
+done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Ubuntu:style=Regular::size=10" -f "FontAwesome:style=Regular:size=11" -f "Ubuntu:style=Bold:size=10" -f "FontAwesome:style=Regular:size=8"
