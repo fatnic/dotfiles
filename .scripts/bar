@@ -51,10 +51,8 @@ Volume() {
 
 WiFi() {
     WIFI_SSID=$(iwgetid -r)
-    #WIFI_ACTIVE=$(ip link list | grep wlp2s0)
     WIFI_COL="$GREEN"
     if [ -z $WIFI_SSID ]; then WIFI_COL="$DARKGREY"; fi
-    #if [ -z $WIFI_ACTIVE ]; then WIFI_COL="$RED"; fi
     echo "%{F$WIFI_COL}⇅%{F-} $WIFI_SSID"
 }
 
@@ -73,9 +71,16 @@ Windows() {
     echo "$WIN_INFO"
 }
 
+Updates() {
+    UP_COUNT=$(cat ~/.update_count)
+    UP_COLOUR="$BLUE"
+    if [ $UP_COUNT == 0 ]; then UP_COUNT=""; UP_COLOUR="$DARKGREY"; fi
+    echo "%{F$UP_COLOUR}⟲ %{F-}$UP_COUNT"
+}
+
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(WiFi)  $(Volume)  $(Battery)         $(TimeDate) "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)   $(WiFi)  $(Volume)  $(Battery)         $(TimeDate) "
     sleep .25
 done | lemonbar -p -g 1343x20+12+12 -B $BG -f "xft:Monaco:size=10"
 

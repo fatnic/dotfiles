@@ -7,7 +7,7 @@ synclient TapButton3=2
 dropbox &
 compton &
 
-feh --bg-fill ~/Pictures/Wallpaper/helmet.jpg
+feh --bg-fill ~/Pictures/Wallpaper/wallhaven-193218.jpg
 
 bar &
 sxhkd &

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+UP_COUNT=$(checkupdates | wc -l)
+echo "$UP_COUNT" > ~/.update_count
+
+
