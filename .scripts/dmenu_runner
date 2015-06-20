@@ -1,0 +1,4 @@
+#!/bin/bash
+
+dmenu_run -x 80 -y 14 -w 300 -o 0.9 -p ">"
+
