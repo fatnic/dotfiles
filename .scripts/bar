@@ -22,45 +22,48 @@ TimeDate() {
 Battery() {
     BATTERY_PERCENTAGE=$(acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g')
     BATTERY_STATUS=$( acpi --battery | tail -n 1 | cut -d" " -f 3 | sed 's/,$//' )
-    BATTERY_SYMBOL="⚡"
+    BATTERY_ICON=""
 
     case $BATTERY_STATUS in
-           'Charging') BAT_COL="$BLUE" ;;
+           'Charging') BAT_COL="$BLUE"; BATTERY_ICON="" ;;
            'Discharging') BAT_COL="$YELLOW" ;;
-           'Full') BAT_COL="$GREEN" ;;
+           'Full') BAT_COL="$GREEN"; BATTERY_ICON="" ;;
            *) BAT_COL="-" ;;
     esac
     
     if [ $BATTERY_PERCENTAGE -lt 11 ] && [ $BATTERY_STATUS == 'Discharging' ]; then BAT_COL="$RED"; fi
 
-    echo "%{F$BAT_COL}$BATTERY_SYMBOL%{F-} $BATTERY_PERCENTAGE%"
+    echo "%{F$BAT_COL}%{T2}$BATTERY_ICON%{T}%{F-} $BATTERY_PERCENTAGE%"
 }
 
 Volume() {
     AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
     AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
     VOL_COL="$YELLOW"
-    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$DARKGREY"; AUDIO_VOLUME=""; fi
-    echo "%{F$VOL_COL}♫%{F-} $AUDIO_VOLUME"
+    VOL_ICON=""
+    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$DARKGREY"; AUDIO_VOLUME=""; VOL_ICON=""; fi
+    echo "%{F$VOL_COL}%{T2}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME"
 }
 
 WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$GREEN"
     if [ -z $WIFI_SSID ]; then WIFI_COL="$DARKGREY"; fi
-    echo "%{F$WIFI_COL}⇅%{F-}"
+    echo "%{F$WIFI_COL}%{T2}%{T}%{F-}"
 }
 
 Windows() {
     WIN_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | sed '5d')
     WIN_INFO=""
+    WIN_OCC=""
+    WIN_FREE=""
     for window in $WIN_STATUS; do
         case $window in
-            O*|F*) WIN_ICON="★"; WIN_COLOUR="-";;
-            o*) WIN_ICON="☆"; WIN_COLOUR="-" ;;
-            f*) WIN_ICON="☆"; WIN_COLOUR="$DARKGREY";;
+            O*|F*) WIN_ICON="$WIN_OCC"; WIN_COLOUR="-";;
+            o*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="-" ;;
+            f*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="$DARKGREY";;
         esac
-        WIN_INFO="$WIN_INFO%{F$WIN_COLOUR}$WIN_ICON%{F-}"
+        WIN_INFO="$WIN_INFO %{F$WIN_COLOUR}$WIN_ICON%{F-}"
     done
 
     echo "$WIN_INFO"
@@ -70,11 +73,11 @@ Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
     UP_COLOUR="$BLUE"
     if [ $UP_COUNT == 0 ]; then UP_COUNT=""; UP_COLOUR="$DARKGREY"; fi
-    echo "%{F$UP_COLOUR}⟲%{F-}"
+    echo "%{F$UP_COLOUR}%{T2}%{T}%{F-}"
 }
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)  $(WiFi)  $(Volume)  $(Battery)         $(TimeDate) "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)  $(WiFi)  $(Volume)  $(Battery)      $(TimeDate) "
     sleep .25
-done | lemonbar -p -g 1343x20+12+12 -B $BG -F $FG -f "xft:size=10"
+done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Monaco:size=10" -f "FontAwesome:style=Regular:size=11"
