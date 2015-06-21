@@ -28,6 +28,9 @@ super + {o,i}
 	bspc window {older,newer} -f; \
 	bspc control --record-history on
 
+super + shift + {o,p}
+    bspc window -d {prev,next} -f
+
 super + y
 	bspc window -w last.manual
 
