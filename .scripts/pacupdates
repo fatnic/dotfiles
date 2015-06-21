@@ -1,7 +1,7 @@
 #!/bin/bash
+CURRENT_USER=$(whoami)
 TIMESTAMP=$(date +"%d-%m-%Y %H:%M:%S")
-
 UP_COUNT=$(checkupdates | wc -l)
-echo "$TIMESTAMP;$UP_COUNT" > /home/dave/.update_count
+echo "$TIMESTAMP;$UP_COUNT" > /home/$CURRENT_USER/.update_count
 
 

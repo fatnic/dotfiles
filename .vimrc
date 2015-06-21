@@ -66,6 +66,8 @@ set nobackup
 set nowb
 set noswapfile
 
+set viminfo=
+
 " ***********************************************
 "              KEYBOARD MAPPINGS 
 " *********************************************** 

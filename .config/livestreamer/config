@@ -1,0 +1,3 @@
+hls-segment-threads=10
+hds-segment-threads=10
+player=vlc --qt-minimal-view

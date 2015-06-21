@@ -2,17 +2,18 @@
 
 # Requires lemonbar-xft-git from AUR
 
-BLUE="#FF00C5CD"
-RED="#FFEF0303"
-YELLOW="#FFF0C674"
-DARKGREY="#FF555555"
-GREEN="#FF7CFC00"
-
 BG="#00151515"
 FG="#CCFFFFFF"
 
+BLUE="#DD779ECB"
+RED="#FFEF0303"
+YELLOW="#CCFFE135"
+GREEN="#EE00A550"
+DARKGREY="#FF555555"
+PURPLE="#DD966FD6"
+
 Active() {
-    xtitle | head -c 60
+    xtitle | head -c 80
 }
 
 TimeDate() { 
@@ -39,7 +40,7 @@ Battery() {
 Volume() {
     AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
     AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
-    VOL_COL="$YELLOW"
+    VOL_COL="$PURPLE"
     VOL_ICON=""
     if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$DARKGREY"; AUDIO_VOLUME=""; VOL_ICON=""; fi
     echo "%{F$VOL_COL}%{T2}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME"
@@ -71,9 +72,8 @@ Windows() {
 
 Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
-    UP_COLOUR="$BLUE"
     UP_ICON=""
-    if [ ! $UP_COUNT == 0 ]; then echo "%{F$BLUE}$UP_ICON%{F-}"; fi
+    if [ ! $UP_COUNT == 0 ]; then echo "%{F$DARKGREY}$UP_ICON%{F-}"; fi
 }
 
 while true
