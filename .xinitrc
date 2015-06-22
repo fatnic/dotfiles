@@ -7,6 +7,8 @@ synclient TapButton3=2
 dropbox &
 compton &
 
+torrent_check &
+
 feh --bg-fill ~/Pictures/Wallpaper/wallhaven-193218.jpg
 
 bar &

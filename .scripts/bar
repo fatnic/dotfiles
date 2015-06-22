@@ -2,8 +2,12 @@
 
 # Requires lemonbar-xft-git from AUR
 
+CURRENT_USER=$(whoami)
+
 BG="#00151515"
 FG="#CCFFFFFF"
+
+INACTIVE="#22FFFFFF"
 
 BLUE="#DD779ECB"
 RED="#FFEF0303"
@@ -42,14 +46,14 @@ Volume() {
     AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
     VOL_COL="$PURPLE"
     VOL_ICON=""
-    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$DARKGREY"; AUDIO_VOLUME=""; VOL_ICON=""; fi
+    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$INACTIVE"; AUDIO_VOLUME=""; VOL_ICON=""; fi
     echo "%{F$VOL_COL}%{T2}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME"
 }
 
 WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$GREEN"
-    if [ -z $WIFI_SSID ]; then WIFI_COL="$DARKGREY"; fi
+    if [ -z $WIFI_SSID ]; then WIFI_COL="$INACTIVE"; fi
     echo "%{F$WIFI_COL}%{T2}%{T}%{F-}"
 }
 
@@ -72,12 +76,22 @@ Windows() {
 
 Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
-    UP_ICON=""
-    if [ ! $UP_COUNT == 0 ]; then echo "%{F$DARKGREY}$UP_ICON%{F-}"; fi
+    UP_ICON=""
+    UP_COLOR="$YELLOW"
+    if [ ! $UP_COUNT == 0 ]; then echo "%{F$YELLOW}$UP_ICON%{F-}"; fi
+}
+
+Torrents() {
+    TORRENTS=$(cat /home/$CURRENT_USER/.torrentind)
+    TORRENT_COLOR="$INACTIVE"
+    if [ $(echo "$TORRENTS" | cut -d':' -f 1) -eq 1 ]; then ACTIVE_TORRENTS=1; TORRENT_COLOR="$PURPLE"; fi
+    if [ $(echo "$TORRENTS" | cut -d':' -f 2) -eq 1 ]; then TORRENT_COLOR="$GREEN" ; fi
+
+    if [ $ACTIVE_TORRENTS ]; then echo "%{F$TORRENT_COLOR}%{F-}"; fi
 }
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Updates)    $(WiFi)    $(Volume)    $(Battery)      $(TimeDate)  "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Torrents) $(Updates) $(WiFi)  $(Volume)    $(Battery)      $(TimeDate)  "
     sleep .25
 done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Ubuntu:style=Regular::size=10" -f "FontAwesome:style=Regular:size=11" -f "Ubuntu:style=Bold:size=10" -f "FontAwesome:style=Regular:size=8"
