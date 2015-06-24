@@ -9,12 +9,12 @@ FG="#CCFFFFFF"
 
 INACTIVE="#22FFFFFF"
 
-BLUE="#DD779ECB"
-RED="#FFEF0303"
-YELLOW="#CCFFE135"
-GREEN="#EE00A550"
+BLUE="#726cc6"
+RED="#c6726c"
+YELLOW="#c0c66c"
+GREEN="#b5e3b8"
 DARKGREY="#FF555555"
-PURPLE="#DD966FD6"
+PURPLE="#e3b5e0"
 
 Active() {
     xtitle | head -c 80
@@ -38,7 +38,7 @@ Battery() {
     
     if [ $BATTERY_PERCENTAGE -lt 11 ] && [ $BATTERY_STATUS == 'Discharging' ]; then BAT_COL="$RED"; fi
 
-    echo "%{F$BAT_COL}%{T2}$BATTERY_ICON%{T}%{F-} $BATTERY_PERCENTAGE%"
+    echo "%{F$BAT_COL}%{T4}$BATTERY_ICON%{T}%{F-} $BATTERY_PERCENTAGE%"
 }
 
 Volume() {
@@ -77,21 +77,27 @@ Windows() {
 Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
     UP_ICON=""
-    UP_COLOR="$YELLOW"
-    if [ ! $UP_COUNT == 0 ]; then echo "%{F$YELLOW}$UP_ICON%{F-}"; fi
+    if [ ! $UP_COUNT == 0 ]; then echo "%{F$FG}%{T4}$UP_ICON%{T}%{F-}"; fi
 }
 
 Torrents() {
     TORRENTS=$(cat /home/$CURRENT_USER/.torrentind)
     TORRENT_COLOR="$INACTIVE"
-    if [ $(echo "$TORRENTS" | cut -d':' -f 1) -eq 1 ]; then ACTIVE_TORRENTS=1; TORRENT_COLOR="$PURPLE"; fi
-    if [ $(echo "$TORRENTS" | cut -d':' -f 2) -eq 1 ]; then TORRENT_COLOR="$GREEN" ; fi
+    ACTIVE_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 1)
+    COMPLETED_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 2)
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$DARKGREY"; fi
+    if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
 
-    if [ $ACTIVE_TORRENTS ]; then echo "%{F$TORRENT_COLOR}%{F-}"; fi
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then echo "%{F$TORRENT_COLOR}%{F-} ($COMPLETED_TORRENTS/$ACTIVE_TORRENTS)"; fi
+}
+
+Dropbox() {
+    DROPBOX_STATUS=$(dropbox-cli status | wc -l)
+    if [ $DROPBOX_STATUS -gt 1 ]; then echo "%{F$BLUE}%{F-}"; fi
 }
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Torrents) $(Updates) $(WiFi)  $(Volume)    $(Battery)      $(TimeDate)  "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Dropbox) $(Torrents) $(Updates) $(WiFi)   $(Volume)  $(Battery)      $(TimeDate)  "
     sleep .25
-done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Ubuntu:style=Regular::size=10" -f "FontAwesome:style=Regular:size=11" -f "Ubuntu:style=Bold:size=10" -f "FontAwesome:style=Regular:size=8"
+done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Ubuntu:style=Regular::size=10" -f "FontAwesome:style=Regular:size=11" -f "Ubuntu:style=Bold:size=10" -f "FontAwesome:style=Regular:size=9"

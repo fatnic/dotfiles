@@ -3,14 +3,14 @@ URxvt*termName:rxvt-unicode-256color
 Xft.antialias:  true
 Xft.autohint:   false
 Xft.hinting:    true
-!Xft.hintstyle:  hintslight
+Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcdlight
 Xft.rgba:       rgb
 Xft.dpi:        96
 
 !Fonts
-!URxvt.font: xft:Inconsolata:size=11
 URxvt.font: xft:Monaco:size=10
+!URxvt.font: xft:Ubuntu Mono:size=11,xft:Monospace:size=9:antialias=true:hinting=true
 URxvt.letterSpace: -1
 
 URxvt*transparent: true
@@ -110,5 +110,5 @@ URxvt.iso14755:false
 URxvt.colorIT: #87af5f
 URxvt.colorBD: #d7dfdf
 !URxvt.colorUL:
-
-
+!
+URxvt.cursorUnderline:1
