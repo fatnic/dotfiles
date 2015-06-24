@@ -4,6 +4,12 @@
 
 CURRENT_USER=$(whoami)
 
+FONT_1="Ubuntu:style=Regular::size=10"
+FONT_2="Ubuntu:style=Bold:size=10"
+FONT_3="FontAwesome:style=Regular:size=8"
+FONT_4="FontAwesome:style=Regular:size=9"
+FONT_5="FontAwesome:style=Regular:size=10" 
+
 BG="#00151515"
 FG="#CCFFFFFF"
 
@@ -21,7 +27,7 @@ Active() {
 }
 
 TimeDate() { 
-    echo "$(date +"%A %B %d")   %{T3}$(date +"%H:%M")%{T}"
+    echo "$(date +"%A %B %d")   %{T2}$(date +"%H:%M")%{T}"
 }
 
 Battery() {
@@ -31,7 +37,7 @@ Battery() {
 
     case $BATTERY_STATUS in
            'Charging') BAT_COL="$BLUE"; BATTERY_ICON="" ;;
-           'Discharging') BAT_COL="$YELLOW" ;;
+           'Discharging') BAT_COL="$FG" ;;
            'Full') BAT_COL="$GREEN"; BATTERY_ICON="" ;;
            *) BAT_COL="-" ;;
     esac
@@ -44,17 +50,17 @@ Battery() {
 Volume() {
     AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
     AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
-    VOL_COL="$PURPLE"
+    VOL_COL="$FG"
     VOL_ICON=""
     if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$INACTIVE"; AUDIO_VOLUME=""; VOL_ICON=""; fi
-    echo "%{F$VOL_COL}%{T2}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME"
+    echo "%{F$VOL_COL}%{T5}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME"
 }
 
 WiFi() {
     WIFI_SSID=$(iwgetid -r)
-    WIFI_COL="$GREEN"
+    WIFI_COL="$FG"
     if [ -z $WIFI_SSID ]; then WIFI_COL="$INACTIVE"; fi
-    echo "%{F$WIFI_COL}%{T2}%{T}%{F-}"
+    echo "%{F$WIFI_COL}%{T5}%{T}%{F-}"
 }
 
 Windows() {
@@ -68,7 +74,7 @@ Windows() {
             o*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="-" ;;
             f*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="$DARKGREY";;
         esac
-        WIN_INFO="$WIN_INFO %{F$WIN_COLOUR}%{T4}$WIN_ICON%{T}%{F-}"
+        WIN_INFO="$WIN_INFO %{F$WIN_COLOUR}%{T3}$WIN_ICON%{T}%{F-}"
     done
 
     echo "$WIN_INFO"
@@ -85,19 +91,19 @@ Torrents() {
     TORRENT_COLOR="$INACTIVE"
     ACTIVE_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 1)
     COMPLETED_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 2)
-    if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$DARKGREY"; fi
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$FG"; fi
     if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
 
-    if [ $ACTIVE_TORRENTS -gt 0 ]; then echo "%{F$TORRENT_COLOR}%{F-} ($COMPLETED_TORRENTS/$ACTIVE_TORRENTS)"; fi
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then echo "%{F$TORRENT_COLOR}%{T5}%{T}%{F-}"; fi
 }
 
 Dropbox() {
     DROPBOX_STATUS=$(dropbox-cli status | wc -l)
-    if [ $DROPBOX_STATUS -gt 1 ]; then echo "%{F$BLUE}%{F-}"; fi
+    if [ $DROPBOX_STATUS -gt 1 ]; then echo "%{F$FG}%{T5}%{T}%{F-}"; fi
 }
 
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Dropbox) $(Torrents) $(Updates) $(WiFi)   $(Volume)  $(Battery)      $(TimeDate)  "
+    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Dropbox) $(Torrents) $(Updates)$(WiFi) $(Volume)  $(Battery)      $(TimeDate)  "
     sleep .25
-done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f "Ubuntu:style=Regular::size=10" -f "FontAwesome:style=Regular:size=11" -f "Ubuntu:style=Bold:size=10" -f "FontAwesome:style=Regular:size=9"
+done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 

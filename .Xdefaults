@@ -110,5 +110,3 @@ URxvt.iso14755:false
 URxvt.colorIT: #87af5f
 URxvt.colorBD: #d7dfdf
 !URxvt.colorUL:
-!
-URxvt.cursorUnderline:1

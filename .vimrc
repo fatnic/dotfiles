@@ -27,7 +27,7 @@ Plugin 'scrooloose/syntastic' "pip install flake8
 Plugin 'davidhalter/jedi-vim' "pip install jedi
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'django.vim'
-Plugin 'lambdalisue/vim-pyenv'
+"Plugin 'lambdalisue/vim-pyenv'
 Plugin 'mindriot101/vim-yapf' "pip install yapf
 
 call vundle#end()
