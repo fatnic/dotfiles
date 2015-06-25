@@ -9,7 +9,7 @@ Xft.rgba:       rgb
 Xft.dpi:        96
 
 !Fonts
-URxvt.font: xft:Monaco:size=10
+URxvt.font: xft:Monaco:size=10,xft:Ubuntu:size=10,xft:FontAwesome:size=10
 !URxvt.font: xft:Ubuntu Mono:size=11,xft:Monospace:size=9:antialias=true:hinting=true
 URxvt.letterSpace: -1
 

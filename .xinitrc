@@ -11,7 +11,7 @@ compton &
 
 torrent_check.py &
 
-feh --bg-fill ~/Pictures/Wallpaper/wallhaven-52623.jpg
+sh ~/.fehbg
 
 bar &
 sxhkd &

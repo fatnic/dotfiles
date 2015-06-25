@@ -52,7 +52,7 @@ Volume() {
     AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
     VOL_COL="$FG"
     VOL_ICON=""
-    if [ $AUDIO_STATUS == "off" ]; then VOL_COL="$INACTIVE"; AUDIO_VOLUME=""; VOL_ICON=""; fi
+    if [ $AUDIO_STATUS == "off" ]; then AUDIO_VOLUME=""; VOL_ICON=""; fi
     echo "%{F$VOL_COL}%{T5}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME"
 }
 
