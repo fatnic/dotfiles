@@ -23,7 +23,7 @@ DARKGREY="#FF555555"
 PURPLE="#e3b5e0"
 
 Active() {
-    xtitle | head -c 80
+    xtitle | head -c 100
 }
 
 TimeDate() { 
@@ -34,12 +34,11 @@ Battery() {
     BATTERY_PERCENTAGE=$(acpi --battery | cut -d" " -f 4 | sed 's/[^0-9]*//g')
     BATTERY_STATUS=$( acpi --battery | tail -n 1 | cut -d" " -f 3 | sed 's/,$//' )
     BATTERY_ICON=""
+    BAT_COL="$FG"
 
     case $BATTERY_STATUS in
-           'Charging') BAT_COL="$BLUE"; BATTERY_ICON="" ;;
-           'Discharging') BAT_COL="$FG" ;;
-           'Full') BAT_COL="$GREEN"; BATTERY_ICON="" ;;
-           *) BAT_COL="-" ;;
+           'Charging') BATTERY_ICON="" ;;
+           'Full') BATTERY_ICON="" ;;
     esac
     
     if [ $BATTERY_PERCENTAGE -lt 11 ] && [ $BATTERY_STATUS == 'Discharging' ]; then BAT_COL="$RED"; fi
@@ -102,8 +101,15 @@ Dropbox() {
     if [ $DROPBOX_STATUS -gt 1 ]; then echo "%{F$FG}%{T5}%{T}%{F-}"; fi
 }
 
+CapsLock() {
+    CAPS_SATUS=$(xset -q | grep 'Caps Lock:' | cut -d ' ' -f 10)
+    if [ $CAPS_SATUS == 'on' ]; then echo "%{T5}%{T}"; fi
+}
+
 while true
 do
-    echo -e "%{l} $(Windows) %{c}$(Active) %{r}$(Dropbox) $(Torrents) $(Updates)$(WiFi) $(Volume)  $(Battery)      $(TimeDate)  "
+    echo -e "%{l} $(Windows) \
+             %{c}$(Active) \
+             %{r}$(CapsLock) $(Dropbox) $(Torrents) $(Updates) $(WiFi)  $(Volume)  $(Battery)      $(TimeDate)  "
     sleep .25
 done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 
