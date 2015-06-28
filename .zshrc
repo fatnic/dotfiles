@@ -11,9 +11,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-alias yt="youtube-dl -f best"
+
+alias rm="trash-put"
 alias la="ls -lAhG"
 alias ld="ls -ld */"
+
+alias yt="youtube-dl -f best"
 alias t="tmux"
 alias tran="transmission-remote-cli"
 

@@ -22,3 +22,9 @@ rename Suits S05E01.mp4
 search vid
 search sed
 l
+rename Blank Time Sheet.ods
+copy Time Sheet we 
+copy Time Sheet we 03-07-2015.ods
+copy "Time Sheet we 03-07-2015.ods"
+copy
+rename Time Sheet we 03-07-2015.ods

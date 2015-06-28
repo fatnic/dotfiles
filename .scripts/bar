@@ -93,7 +93,7 @@ Torrents() {
     if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$FG"; fi
     if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
 
-    if [ $ACTIVE_TORRENTS -gt 0 ]; then echo "%{F$TORRENT_COLOR}%{T5}%{T}%{F-}"; fi
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then echo "%{A:urxvt -e transmission-remote-cli:}%{F$TORRENT_COLOR}%{T5}%{T}%{F-}%{A}"; fi
 }
 
 Dropbox() {
@@ -112,4 +112,4 @@ do
              %{c}$(Active) \
              %{r}$(CapsLock) $(Dropbox) $(Torrents) $(Updates) $(WiFi)  $(Volume)  $(Battery)      $(TimeDate)  "
     sleep .25
-done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 
+done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 | sh
