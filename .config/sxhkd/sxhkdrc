@@ -89,6 +89,9 @@ super + Return
 super + space
 	dmenu_runner
 
+super + BackSpace
+    dmenu_session
+
 super + b
     firefox
 

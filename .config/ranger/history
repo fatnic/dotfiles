@@ -28,3 +28,12 @@ copy Time Sheet we 03-07-2015.ods
 copy "Time Sheet we 03-07-2015.ods"
 copy
 rename Time Sheet we 03-07-2015.ods
+
+search 3453863
+j
+search 3471
+search 3453
+search 2277
+search 2610
+search .1
+search *.1
