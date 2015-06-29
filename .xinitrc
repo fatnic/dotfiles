@@ -14,6 +14,5 @@ torrent_check.py &
 
 sh ~/.fehbg
 
-bar &
 sxhkd &
 exec bspwm

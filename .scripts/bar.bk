@@ -62,29 +62,22 @@ WiFi() {
     echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T}%{F-}%{A}"
 }
 
-Desktops() {
-    # Update last sed with desktop count plus one; TODO: automate it
-    DESKTOP_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | sed '7d')
-    DESKTOP_INFO=""
-    for desktop in $DESKTOP_STATUS; do
-        DESKTOP_NAME=$(echo "$desktop" | cut -c2-)
-        case $desktop in
-            O*|F*) DESKTOP_COLOUR="$BLUE" ;;
-            o*) DESKTOP_COLOUR="-" ;;
-            f*) DESKTOP_COLOUR="$DARKGREY";;
+Windows() {
+    WIN_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | sed '5d')
+    WIN_INFO=""
+    WIN_OCC=""
+    WIN_FREE=""
+    for window in $WIN_STATUS; do
+        WINDOW_NAME=$(echo "$window" | cut -c2-)
+        case $window in
+            O*|F*) WIN_ICON="$WIN_OCC"; WIN_COLOUR="-";;
+            o*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="-" ;;
+            f*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="$DARKGREY";;
         esac
-        case $DESKTOP_NAME in
-            1) DESKTOP_ICON="" ;; #Browser 
-            2) DESKTOP_ICON="" ;; #Coding 
-            3) DESKTOP_ICON="" ;; #Files
-            4) DESKTOP_ICON="" ;; #Downloading 
-            5) DESKTOP_ICON="" ;; #Media 
-            *) DESKTOP_ICON="" ;; #Misc
-        esac
-        DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T}%{F-}%{A}"
+        WIN_INFO="$WIN_INFO %{A:bspc desktop -f $WINDOW_NAME:}%{F$WIN_COLOUR}%{T3}$WIN_ICON%{T}%{F-}%{A}"
     done
 
-    echo "$DESKTOP_INFO"
+    echo "$WIN_INFO"
 }
 
 Updates() {
@@ -116,7 +109,7 @@ CapsLock() {
 
 while true
 do
-    echo -e "%{l} $(Desktops) \
+    echo -e "%{l} $(Windows) \
              %{c}$(Active) \
              %{r}$(CapsLock) $(Dropbox) $(Torrents) $(Updates) $(WiFi)  $(Volume)  $(Battery)      $(TimeDate)  "
     sleep .25
