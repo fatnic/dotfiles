@@ -52,14 +52,14 @@ Volume() {
     VOL_COL="$FG"
     VOL_ICON=""
     if [ $AUDIO_STATUS == "off" ]; then AUDIO_VOLUME=""; VOL_ICON=""; fi
-    echo "%{F$VOL_COL}%{T5}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME"
+    echo "%{A:amixer set Master toggle:}%{A4:amixer set Master 1db+:}%{A5:amixer set Master 1db-:}%{F$VOL_COL}%{T5}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME%{A}%{A}%{A}"
 }
 
 WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$FG"
     if [ -z $WIFI_SSID ]; then WIFI_COL="$INACTIVE"; fi
-    echo "%{F$WIFI_COL}%{T5}%{T}%{F-}"
+    echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T}%{F-}%{A}"
 }
 
 Windows() {
@@ -83,7 +83,7 @@ Windows() {
 Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
     UP_ICON=""
-    if [ ! $UP_COUNT == 0 ]; then echo "%{F$FG}%{T4}$UP_ICON%{T}%{F-}"; fi
+    if [ ! $UP_COUNT == 0 ]; then echo "%{A:urxvt -e pacaur -Syu:}%{F$FG}%{T4}$UP_ICON%{T}%{F-}%{A}"; fi
 }
 
 Torrents() {
