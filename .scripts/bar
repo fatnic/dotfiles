@@ -68,12 +68,13 @@ Windows() {
     WIN_OCC=""
     WIN_FREE=""
     for window in $WIN_STATUS; do
+        WINDOW_NAME=$(echo "$window" | cut -c2-)
         case $window in
             O*|F*) WIN_ICON="$WIN_OCC"; WIN_COLOUR="-";;
             o*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="-" ;;
             f*) WIN_ICON="$WIN_FREE"; WIN_COLOUR="$DARKGREY";;
         esac
-        WIN_INFO="$WIN_INFO %{F$WIN_COLOUR}%{T3}$WIN_ICON%{T}%{F-}"
+        WIN_INFO="$WIN_INFO %{A:bspc desktop -f $WINDOW_NAME:}%{F$WIN_COLOUR}%{T3}$WIN_ICON%{T}%{F-}%{A}"
     done
 
     echo "$WIN_INFO"
