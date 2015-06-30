@@ -63,8 +63,7 @@ WiFi() {
 }
 
 Desktops() {
-    # Update last sed with desktop count plus one; TODO: automate it
-    DESKTOP_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | sed '7d')
+    DESKTOP_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | head --lines=-1)
     DESKTOP_INFO=""
     for desktop in $DESKTOP_STATUS; do
         DESKTOP_NAME=$(echo "$desktop" | cut -c2-)
@@ -77,8 +76,8 @@ Desktops() {
             1) DESKTOP_ICON="" ;; #Browser 
             2) DESKTOP_ICON="" ;; #Coding 
             3) DESKTOP_ICON="" ;; #Files
-            4) DESKTOP_ICON="" ;; #Downloading 
-            5) DESKTOP_ICON="" ;; #Media 
+            4) DESKTOP_ICON="" ;; #Media 
+            5) DESKTOP_ICON="" ;; #Downloading 
             *) DESKTOP_ICON="" ;; #Misc
         esac
         DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T}%{F-}%{A}"

@@ -5,7 +5,7 @@ choice=$(echo -e "lock\nexit\nshutdown\nreboot\nscreenshot" | dmenu -x 90 -y 15 
 case $choice in 
     screenshot) sleep 1 && scrot & ;;
     lock) ;;
-    exit) pkill -x bar; bspc quit & ;;
+    exit) pkill -15 bar; bspc quit & ;;
     shutdown) systemctl poweroff & ;;
     reboot) systemctl reboot & ;;
 esac

@@ -2,3 +2,5 @@
 .vim/.netrwhist
 .vim/bundle/*
 *.swp
+.config/ranger/bookmarks
+.config/ranger/history
