@@ -86,6 +86,8 @@ URxvt*.shading: 20
 !Say no to scrollbars
 URxvt*scrollBar:false
 
+URxvt*cursorUnderline: true
+
 
 URxvt.imLocale:en_GB.UTF8
 
