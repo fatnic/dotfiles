@@ -88,7 +88,7 @@ super + @button{1-3}
 #
 
 super + Return
-	bspc desktop -f 2 && urxvt
+	bspc desktop -f code && urxvt
 
 super + space
 	dmenu_runner
@@ -100,7 +100,7 @@ super + b
     firefox
 
 super + r
-    bspc desktop -f 3 && urxvt -e ranger
+    bspc desktop -f files && urxvt -e ranger
 
 # make sxhkd reload its configuration files:
 super + Escape
