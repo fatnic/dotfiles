@@ -13,13 +13,13 @@ FONT_5="FontAwesome:style=Regular:size=10"
 BG="#00151515"
 FG="#CCFFFFFF"
 
-INACTIVE="#22FFFFFF"
+INACTIVE="#55FFFFFF"
 
 BLUE="#726cc6"
 RED="#c6726c"
 YELLOW="#c0c66c"
 GREEN="#b5e3b8"
-DARKGREY="#FF555555"
+DARKGREY="#959595"
 PURPLE="#e3b5e0"
 
 Active() {
@@ -69,8 +69,8 @@ Desktops() {
         DESKTOP_NAME=$(echo "$desktop" | cut -c2-)
         case $desktop in
             O*|F*) DESKTOP_COLOUR="$BLUE" ;;
-            o*) DESKTOP_COLOUR="-" ;;
-            f*) DESKTOP_COLOUR="$DARKGREY";;
+            o*) DESKTOP_COLOUR="$FG" ;;
+            f*) DESKTOP_COLOUR="$INACTIVE";;
         esac
         case $DESKTOP_NAME in
             browser) DESKTOP_ICON="" ;;
