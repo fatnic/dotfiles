@@ -8,8 +8,6 @@ bspc config split_ratio         0.52
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
-bspc config auto_alternate      true
-bscp config auto_cancel         true
 
 bspc config normal_border_color "#000000"
 bspc config focused_border_color "#111111"
@@ -17,9 +15,10 @@ bspc config presel_border_color "#555555"
 
 bspc monitor -d browser code files media download misc
 
-bspc rule -a Gimp follow=on floating=on
+bspc rule -a Gimp desktop=misc follow=on floating=on
 bspc rule -a Firefox follow=on desktop=browser
 bspc rule -a vlc follow=on desktop=media
 bspc rule -a wesnoth follow=on desktop=misc fullscreen=on
+bspc rule -a libreoffice follow=on desktop=misc
 
 bar &

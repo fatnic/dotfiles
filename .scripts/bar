@@ -77,7 +77,7 @@ Desktops() {
             code) DESKTOP_ICON="" ;; 
             files) DESKTOP_ICON="" ;;
             media) DESKTOP_ICON="" ;;
-            download) DESKTOP_ICON="" ;;
+            download) DESKTOP_ICON="" ;;
             *) DESKTOP_ICON="" ;; 
         esac
         DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T}%{F-}%{A}"
@@ -89,7 +89,7 @@ Desktops() {
 Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
     UP_ICON=""
-    if [ ! $UP_COUNT == 0 ]; then echo "%{A:bspc desktop -f code; urxvt -e pacaur -Syu:}%{F$FG}%{T4}$UP_ICON%{T}%{F-}%{A}"; fi
+    if [ ! $UP_COUNT == 0 ]; then echo "%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T4}$UP_ICON%{T}%{F-}%{A}"; fi
 }
 
 Torrents() {
