@@ -70,7 +70,6 @@ super + {1-9,0}
 super + shift + {1-9,0}
 	bspc window -d ^{1-9,10} -f
 
-
 ~button1
 	bspc pointer -g focus
 
