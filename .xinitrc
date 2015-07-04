@@ -2,7 +2,7 @@ xset fp+ ~/.fonts
 xset fp rehash
 xsetroot -cursor_name left_ptr
 
-source .Xresources
+[[ -f ~/.Xresources  ]] && xrdb -merge ~/.Xresources
 
 export LANG=en_GB.UTF-8
 
