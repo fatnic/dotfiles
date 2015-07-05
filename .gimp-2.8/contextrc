@@ -1,9 +1,8 @@
 # GIMP user context
 
-(tool "gimp-bucket-fill-tool")
+(tool "gimp-zoom-tool")
 (paint-info "gimp-paintbrush")
-(foreground (color-rgb 1.000000 1.000000 1.000000))
-(background (color-rgb 0.000000 0.000000 0.000000))
+(background (color-rgb 0.819608 0.635294 0.423529))
 (brush "2. Hardness 050")
 (dynamics "Pressure Opacity")
 (pattern "Pine")

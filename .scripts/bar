@@ -17,7 +17,7 @@ Active() {
 }
 
 TimeDate() { 
-    echo "$(date +"%A %B %d")   %{T2}$(date +"%H:%M")%{T}"
+    echo "$(date +"%A %B %d")    %{T2}$(date +"%H:%M")%{T}"
 }
 
 Battery() {
@@ -58,8 +58,8 @@ Desktops() {
     for desktop in $DESKTOP_STATUS; do
         DESKTOP_NAME=$(echo "$desktop" | cut -c2-)
         case $desktop in
-            O*|F*) DESKTOP_COLOUR="$BLUE" ;;
-            o*) DESKTOP_COLOUR="$FG" ;;
+            O*|F*) DESKTOP_COLOUR="$ACTIVE" ;;
+            o*) DESKTOP_COLOUR="$OCCUPIED" ;;
             f*) DESKTOP_COLOUR="$INACTIVE";;
         esac
         case $DESKTOP_NAME in
