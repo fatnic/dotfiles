@@ -25,6 +25,10 @@ alias tran="transmission-remote-cli"
 alias mkvenv="virtualenv .venv && activate"
 alias activate="source .venv/bin/activate"
 
+twitch () {
+    livestreamer twitch.tv/$1 ${2-source}
+}
+
 extract () {
   if [ -f $1 ] ; then
     case $1 in
