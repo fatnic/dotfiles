@@ -11,11 +11,11 @@ FONT_4="FontAwesome:style=Regular:size=9"
 FONT_5="FontAwesome:style=Regular:size=10" 
 
 BG="#00151515"
-FG="#CCFFFFFF"
+FG="#ffffff"
 
-INACTIVE="#55FFFFFF"
+INACTIVE="#777777"
 
-BLUE="#726cc6"
+BLUE="#76b6da"
 RED="#c6726c"
 YELLOW="#c0c66c"
 GREEN="#b5e3b8"
