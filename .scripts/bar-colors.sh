@@ -1,0 +1,11 @@
+BG="#00151515"
+FG="#eeffffff"
+
+INACTIVE="#777777"
+
+BLUE="#76b6da"
+RED="#c6726c"
+YELLOW="#c0c66c"
+GREEN="#b5e3b8"
+DARKGREY="#959595"
+PURPLE="#e3b5e0"

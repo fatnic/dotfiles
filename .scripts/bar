@@ -10,17 +10,7 @@ FONT_3="FontAwesome:style=Regular:size=8"
 FONT_4="FontAwesome:style=Regular:size=9"
 FONT_5="FontAwesome:style=Regular:size=10" 
 
-BG="#00151515"
-FG="#ffffff"
-
-INACTIVE="#777777"
-
-BLUE="#76b6da"
-RED="#c6726c"
-YELLOW="#c0c66c"
-GREEN="#b5e3b8"
-DARKGREY="#959595"
-PURPLE="#e3b5e0"
+source bar-colors.sh
 
 Active() {
     xtitle | head -c 100

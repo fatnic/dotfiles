@@ -1,0 +1,6 @@
+from ranger.api.commands import *
+
+map <DELETE> shell -s trash-put %s
+set use_preview_script true
+set preview_images true
+sort natural

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-dmenu_run -x 90 -y 15 -w 300 -o 0.9 -p ">" -dim 0.8 -sb "#7f79a9"
-
