@@ -1,1 +1,3 @@
-/home/dave/.dotfiles/.config/livestreamer/config
+hds-segment-threads 10
+hls-segment-threads 10
+stream-segment-threads 10

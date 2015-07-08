@@ -19,14 +19,14 @@ Plugin 'tpope/vim-commentary'
 Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 
 Plugin 'godlygeek/tabular'
 
-Plugin 'scrooloose/syntastic' "pip install flake8
+"Plugin 'scrooloose/syntastic' "pip install flake8
 Plugin 'davidhalter/jedi-vim' "pip install jedi
-Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'django.vim'
+"Plugin 'Glench/Vim-Jinja2-Syntax'
+"Plugin 'django.vim'
 "Plugin 'lambdalisue/vim-pyenv'
 Plugin 'mindriot101/vim-yapf' "pip install yapf
 
