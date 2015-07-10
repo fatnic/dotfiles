@@ -1,4 +1,2 @@
-default-stream 720p
-
 hds-segment-threads 10
 hls-segment-threads 10
