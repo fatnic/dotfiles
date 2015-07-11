@@ -10,7 +10,7 @@ bspc config gapless_monocle     true
 bspc config focus_by_distance   true
 
 bspc config normal_border_color "#000000"
-bspc config focused_border_color "#111111"
+bspc config focused_border_color "#cccccc"
 bspc config presel_border_color "#555555"
 
 bspc monitor -d browser code files media download misc
