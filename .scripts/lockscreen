@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Add extra screen to bspwm
+# Change lemonbar config
+# kill keyboard shortcuts
+
+bspc monitor -d browser code files media download misc lockscreen
+bspc desktop -f lockscreen
+
+pkill -15 bar
+pkill -15 sxhkd
+
+lockbar &
+
