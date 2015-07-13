@@ -78,8 +78,8 @@ Desktops() {
 
 Updates() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
-    UP_ICON=""
-    if [ ! $UP_COUNT == 0 ]; then echo "%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T4}$UP_ICON%{T}%{F-}%{A}"; fi
+    UP_ICON=""
+    if [ ! $UP_COUNT == 0 ]; then echo "%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T5}$UP_ICON%{T}%{F-}%{A}"; fi
 }
 
 Torrents() {
@@ -103,10 +103,16 @@ CapsLock() {
     if [ $CAPS_SATUS == 'on' ]; then echo "%{T5}%{T}"; fi
 }
 
+CPUTemp() {
+    TEMP=$(acpi -t | cut -d ' ' -f 4 | gawk '{printf("%d\n", $1)}')
+    TEMP_SYMBOL=""
+    echo "%{T5}$TEMP_SYMBOL%{T} $TEMP°c"
+}
+
 while true
 do
     echo -e "%{l} $(Desktops) \
              %{c}$(Active) \
-             %{r}$(CapsLock) $(Dropbox) $(Torrents) $(Updates) $(WiFi)  $(Volume)  $(Battery)      $(TimeDate)  "
+             %{r}$(CapsLock) $(Dropbox) $(Torrents) $(Updates) $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)  "
     sleep .25
 done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 | sh
