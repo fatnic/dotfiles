@@ -48,7 +48,7 @@ Volume() {
 WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$FG"
-    if [ -z $WIFI_SSID ]; then WIFI_COL="$INACTIVE"; fi
+    if [ -z "$WIFI_SSID" ]; then WIFI_COL="$INACTIVE"; fi
     echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T}%{F-}%{A}"
 }
 
