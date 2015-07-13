@@ -106,7 +106,7 @@ CapsLock() {
 CPUTemp() {
     TEMP=$(acpi -t | cut -d ' ' -f 4 | gawk '{printf("%d\n", $1)}')
     TEMP_SYMBOL=""
-    echo "%{T5}$TEMP_SYMBOL%{T} $TEMP°c"
+    echo "%{T3}$TEMP_SYMBOL%{T} $TEMP°c"
 }
 
 while true
