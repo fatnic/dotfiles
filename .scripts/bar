@@ -73,7 +73,7 @@ Desktops() {
         DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T}%{F-}%{A}"
     done
 
-    echo "$DESKTOP_INFO"
+    echo "%{A4:bspc desktop -f prev:}%{A5:bspc desktop -f next:}$DESKTOP_INFO%{A}%{A}"
 }
 
 Updates() {
