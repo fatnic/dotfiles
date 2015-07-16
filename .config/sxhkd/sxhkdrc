@@ -98,6 +98,9 @@ super + BackSpace
 super + b
     firefox
 
+super + e
+    scrot
+
 super + r
     bspc desktop -f files && urxvt -e ranger
 
