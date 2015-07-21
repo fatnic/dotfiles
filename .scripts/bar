@@ -113,6 +113,6 @@ while true
 do
     echo -e "%{l} $(Desktops) \
              %{c}$(Active) \
-             %{r}$(CapsLock) $(Dropbox) $(Torrents) $(Updates)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)  "
+             %{r}$(CapsLock) $(Dropbox)  $(Torrents)  $(Updates)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)  "
     sleep .25
 done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 | sh
