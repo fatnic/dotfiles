@@ -52,6 +52,12 @@ WiFi() {
     echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T}%{F-}%{A}"
 }
 
+CPUTemp() {
+    TEMP=$(acpi -t | cut -d ' ' -f 4 | gawk '{printf("%d\n", $1)}')
+    TEMP_SYMBOL=""
+    echo "%{T3}$TEMP_SYMBOL%{T} $TEMP°c"
+}
+
 Desktops() {
     DESKTOP_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | head --lines=-1)
     DESKTOP_INFO=""
@@ -76,43 +82,42 @@ Desktops() {
     echo "%{A4:bspc desktop -f prev:}%{A5:bspc desktop -f next:}$DESKTOP_INFO%{A}%{A}"
 }
 
-Updates() {
-    UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
-    UP_ICON=""
-    if [ ! $UP_COUNT == 0 ]; then echo "%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T5}$UP_ICON%{T}%{F-}%{A}"; fi
-}
+Notifications() {
+    GAP=" "
 
-Torrents() {
+    # Check for Arch updates
+    UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
+    icon_update=""
+    if [ ! $UP_COUNT == 0 ]; then 
+        NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T5}$icon_update%{T}%{F-}%{A}$NOTIFICATIONS"; 
+    fi
+
+    # Any active torrents?
     TORRENTS=$(cat /home/$CURRENT_USER/.torrentind)
     TORRENT_COLOR="$INACTIVE"
     ACTIVE_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 1)
     COMPLETED_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 2)
     if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$FG"; fi
     if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then 
+        NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e transmission-remote-cli:}%{F$TORRENT_COLOR}%{T5}%{T}%{F-}%{A}$NOTIFICATIONS";
+    fi
 
-    if [ $ACTIVE_TORRENTS -gt 0 ]; then echo "%{A:bspc desktop -f download; urxvt -e transmission-remote-cli:}%{F$TORRENT_COLOR}%{T5}%{T}%{F-}%{A}"; fi
-}
-
-Dropbox() {
+    # Dropbox
     DROPBOX_STATUS=$(dropbox-cli status | wc -l)
-    if [ $DROPBOX_STATUS -gt 1 ]; then echo "%{F$FG}%{T5}%{T}%{F-}"; fi
-}
+    if [ $DROPBOX_STATUS -gt 1 ]; then NOTIFICATIONS="$GAP%{F$FG}%{T5}%{T}%{F-}$NOTIFICATIONS"; fi
 
-CapsLock() {
+    # Check for Caps Lock
     CAPS_SATUS=$(xset -q | grep 'Caps Lock:' | cut -d ' ' -f 10)
-    if [ $CAPS_SATUS == 'on' ]; then echo "%{T5}%{T}"; fi
-}
+    if [ $CAPS_SATUS == 'on' ]; then NOTIFICATIONS="$GAP%{T5}%{T}$NOTIFICATIONS"; fi
 
-CPUTemp() {
-    TEMP=$(acpi -t | cut -d ' ' -f 4 | gawk '{printf("%d\n", $1)}')
-    TEMP_SYMBOL=""
-    echo "%{T3}$TEMP_SYMBOL%{T} $TEMP°c"
+    echo "$NOTIFICATIONS"
 }
 
 while true
 do
     echo -e "%{l} $(Desktops) \
              %{c}$(Active) \
-             %{r}$(CapsLock) $(Dropbox)  $(Torrents)  $(Updates)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)  "
+             %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)  "
     sleep .25
 done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 | sh
