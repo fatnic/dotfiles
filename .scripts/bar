@@ -83,7 +83,7 @@ Desktops() {
 }
 
 Notifications() {
-    GAP=" "
+    GAP="  "
 
     # Check for Arch updates
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
