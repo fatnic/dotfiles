@@ -21,4 +21,6 @@ bspc rule -a vlc follow=on desktop=media
 bspc rule -a wesnoth follow=on desktop=misc fullscreen=on
 bspc rule -a libreoffice follow=on desktop=misc fullscreen=on
 
+bspc rule -a gameathon floating=on
+
 bar &
