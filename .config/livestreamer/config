@@ -1,2 +1,3 @@
-hds-segment-threads 10
-hls-segment-threads 10
+player=mpv --cache 2048
+hds-segment-threads=10
+hls-segment-threads=10

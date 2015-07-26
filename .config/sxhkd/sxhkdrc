@@ -3,7 +3,7 @@
 #
 
 super + alt + Escape
-	bspc quit
+	pkill -15 bar; bspc quit
 
 super + w
 	bspc window -c
