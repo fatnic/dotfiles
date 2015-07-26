@@ -61,7 +61,7 @@
 (session-info "toplevel"
     (factory-entry "gimp-file-open-dialog")
     (position 65 24)
-    (size 852 630))
+    (size 690 710))
 (session-info "toplevel"
     (factory-entry "gimp-shear-tool-dialog")
     (position 464 463))
@@ -70,12 +70,12 @@
     (position 495 465))
 (session-info "toplevel"
     (factory-entry "gimp-file-save-dialog")
-    (position 51 24)
-    (size 852 630))
+    (position 214 47)
+    (size 690 710))
 (session-info "toplevel"
     (factory-entry "gimp-file-export-dialog")
     (position 51 24)
-    (size 852 630))
+    (size 690 710))
 (session-info "toplevel"
     (factory-entry "gimp-toolbox-color-dialog")
     (position 51 170))

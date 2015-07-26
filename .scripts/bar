@@ -17,7 +17,7 @@ Active() {
 }
 
 TimeDate() { 
-    echo "$(date +"%A %B %d")    %{T2}$(date +"%H:%M")%{T}"
+    echo "$(date +"%A %B %d")  %{T2}$(date +"%H:%M")%{T}"
 }
 
 Battery() {
@@ -116,8 +116,8 @@ Notifications() {
 
 while true
 do
-    echo -e "%{l} $(Desktops) \
+    echo -e "%{l}$(Desktops) \
              %{c}$(Active) \
-             %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)  "
+             %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)"
     sleep .25
-done | lemonbar -p -g 1343x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 | sh
+done | lemonbar -p -g 1338x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 | sh

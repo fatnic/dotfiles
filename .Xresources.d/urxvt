@@ -13,7 +13,7 @@ URxvt.font: xft:Monaco:size=10,xft:Monospace:size=9:antialias=true:hinting=true,
 URxvt.letterSpace: -1
 
 URxvt*transparent: true
-URxvt*.shading: 20
+URxvt*.shading:20
 
 !Say no to scrollbars
 URxvt*scrollBar:false

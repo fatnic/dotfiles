@@ -108,6 +108,9 @@ super + r
 super + Escape
 	pkill -USR1 -x sxhkd
 
+super + x
+    pkill -15 bar; bar &
+
 # Media Keys
 
 XF86Audio{Lower,Raise}Volume
