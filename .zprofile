@@ -47,6 +47,7 @@ path=(
   /usr/bin/X11
   /home/dave/.scripts
   /home/dave/.bin
+  /root/.gem/ruby/2.2.0/bin
   $path
 )
 

@@ -11,6 +11,7 @@ synclient TapButton3=2
 
 dropbox &
 compton &
+devmon &
 
 torrent_check.py &
 

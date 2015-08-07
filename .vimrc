@@ -6,32 +6,23 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
-
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'ervandew/supertab'
-Plugin 'mattn/emmet-vim'
+"Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
 Plugin 'jiangmiao/auto-pairs'
 
-Plugin 'tpope/vim-fugitive'
-"Plugin 'airblade/vim-gitgutter'
-
 Plugin 'godlygeek/tabular'
 
-"Plugin 'scrooloose/syntastic' "pip install flake8
-Plugin 'davidhalter/jedi-vim' "pip install jedi
-"Plugin 'Glench/Vim-Jinja2-Syntax'
-"Plugin 'django.vim'
-"Plugin 'lambdalisue/vim-pyenv'
-Plugin 'mindriot101/vim-yapf' "pip install yapf
+Plugin 'valloric/youcompleteme' " .vim/bundle --clang-completer
 
 call vundle#end()
 " END VUNDLE
+
+set exrc
 
 syntax on
 filetype plugin indent on
@@ -67,6 +58,9 @@ set nowb
 set noswapfile
 
 set viminfo=
+
+" gf seaches aditional folders
+let &path.="src/include,/usr/include/AL,"
 
 " ***********************************************
 "              KEYBOARD MAPPINGS 

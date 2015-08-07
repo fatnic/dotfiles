@@ -20,6 +20,11 @@ bspc rule -a Firefox follow=on desktop=browser
 bspc rule -a mpv follow=on desktop=media fullscreen=on
 bspc rule -a wesnoth follow=on desktop=misc fullscreen=on
 bspc rule -a libreoffice follow=on desktop=misc fullscreen=on
-bspc rule -a codeblocks follow=on desktop=misc 
+
+bspc rule -a nemo floating=on
+bspc rule -a GameWindow floating=on
+
+bspc rule -a QtCreator follow=on desktop=code 
+bspc rule -a codeblocks follow=on desktop=code 
 
 bar &

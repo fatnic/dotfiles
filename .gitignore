@@ -4,5 +4,6 @@
 *.swp
 .config/ranger/bookmarks
 .config/ranger/history
+.config/ranger/tagged
 .gimp-2.8/*
 .config/mpv/watch_later
