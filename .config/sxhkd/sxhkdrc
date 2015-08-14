@@ -90,7 +90,7 @@ super + Return
 	bspc desktop -f code && urxvt
 
 super + space
-	rofi -show run
+	dmenu_run
 
 super + BackSpace
     rofi_session

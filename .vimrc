@@ -17,7 +17,7 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'godlygeek/tabular'
 
-Plugin 'valloric/youcompleteme' " .vim/bundle --clang-completer
+"Plugin 'valloric/youcompleteme' " .vim/bundle --clang-completer
 
 call vundle#end()
 " END VUNDLE
@@ -31,7 +31,7 @@ autocmd! bufwritepost .vimrc source %
 
 set t_Co=256
 set t_ut=
-colorscheme Monokai-chris
+colorscheme Monokai
 
 set number
 set numberwidth=3

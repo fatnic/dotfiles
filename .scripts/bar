@@ -17,7 +17,7 @@ Active() {
 }
 
 TimeDate() { 
-    echo "$(date +"%A %B %d")  %{T2}$(date +"%H:%M")%{T}"
+    echo "$(date +"%A %B %d")  %{T2}$(date +"%H:%M")%{T-}"
 }
 
 Battery() {
@@ -33,7 +33,7 @@ Battery() {
     
     if [ $BATTERY_PERCENTAGE -lt 11 ] && [ $BATTERY_STATUS == 'Discharging' ]; then BAT_COL="$RED"; fi
 
-    echo "%{F$BAT_COL}%{T4}$BATTERY_ICON%{T}%{F-} $BATTERY_PERCENTAGE%"
+    echo "%{F$BAT_COL}%{T4}$BATTERY_ICON%{T-}%{F-} $BATTERY_PERCENTAGE%"
 }
 
 Volume() {
@@ -42,20 +42,20 @@ Volume() {
     VOL_COL="$FG"
     VOL_ICON=""
     if [ $AUDIO_STATUS == "off" ]; then AUDIO_VOLUME=""; VOL_ICON=""; fi
-    echo "%{A:amixer set Master toggle:}%{A4:amixer set Master 1db+:}%{A5:amixer set Master 1db-:}%{F$VOL_COL}%{T5}$VOL_ICON%{T}%{F-} $AUDIO_VOLUME%{A}%{A}%{A}"
+    echo "%{A:amixer set Master toggle:}%{A4:amixer set Master 1db+:}%{A5:amixer set Master 1db-:}%{F$VOL_COL}%{T5}$VOL_ICON%{T-}%{F-} $AUDIO_VOLUME%{A}%{A}%{A}"
 }
 
 WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$FG"
     if [ -z "$WIFI_SSID" ]; then WIFI_COL="$INACTIVE"; fi
-    echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T}%{F-}%{A}"
+    echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T-}%{F-}%{A}"
 }
 
 CPUTemp() {
     TEMP=$(acpi -t | cut -d ' ' -f 4 | gawk '{printf("%d\n", $1)}')
     TEMP_SYMBOL=""
-    echo "%{T3}$TEMP_SYMBOL%{T} $TEMP°c"
+    echo "%{T3}$TEMP_SYMBOL%{T-} $TEMP°c"
 }
 
 Desktops() {
@@ -76,10 +76,10 @@ Desktops() {
             download) DESKTOP_ICON="" ;;
             *) DESKTOP_ICON="" ;; 
         esac
-        DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T}%{F-}%{A}"
+        DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T-}%{F-}%{A}"
     done
 
-    echo "%{A4:bspc desktop -f prev:}%{A5:bspc desktop -f next:}$DESKTOP_INFO%{A}%{A}"
+    echo "$DESKTOP_INFO"
 }
 
 Notifications() {
@@ -89,27 +89,27 @@ Notifications() {
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
     icon_update=""
     if [ ! $UP_COUNT == 0 ]; then 
-        NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T5}$icon_update%{T}%{F-}%{A}$NOTIFICATIONS"; 
+        NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T5}$icon_update%{T-}%{F-}%{A}$NOTIFICATIONS"; 
     fi
 
     # Any active torrents?
-    TORRENTS=$(cat /home/$CURRENT_USER/.torrentind)
-    TORRENT_COLOR="$INACTIVE"
-    ACTIVE_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 1)
-    COMPLETED_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 2)
-    if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$FG"; fi
-    if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
-    if [ $ACTIVE_TORRENTS -gt 0 ]; then 
-        NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e transmission-remote-cli:}%{F$TORRENT_COLOR}%{T5}%{T}%{F-}%{A}$NOTIFICATIONS";
-    fi
+    #TORRENTS=$(cat /home/$CURRENT_USER/.torrentind)
+    #TORRENT_COLOR="$INACTIVE"
+    #ACTIVE_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 1)
+    #COMPLETED_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 2)
+    #if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$FG"; fi
+    #if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
+    #if [ $ACTIVE_TORRENTS -gt 0 ]; then 
+    #    NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e transmission-remote-cli:}%{F$TORRENT_COLOR}%{T5}%{T-}%{F-}%{A}$NOTIFICATIONS";
+    #fi
 
     # Dropbox
     DROPBOX_STATUS=$(dropbox-cli status | wc -l)
-    if [ $DROPBOX_STATUS -gt 1 ]; then NOTIFICATIONS="$GAP%{F$FG}%{T5}%{T}%{F-}$NOTIFICATIONS"; fi
+    if [ $DROPBOX_STATUS -gt 1 ]; then NOTIFICATIONS="$GAP%{F$FG}%{T5}%{T-}%{F-}$NOTIFICATIONS"; fi
 
     # Check for Caps Lock
     CAPS_SATUS=$(xset -q | grep 'Caps Lock:' | cut -d ' ' -f 10)
-    if [ $CAPS_SATUS == 'on' ]; then NOTIFICATIONS="$GAP%{T5}%{T}$NOTIFICATIONS"; fi
+    if [ $CAPS_SATUS == 'on' ]; then NOTIFICATIONS="$GAP%{T5}%{T-}$NOTIFICATIONS"; fi
 
     echo "$NOTIFICATIONS"
 }
@@ -120,4 +120,4 @@ do
              %{c}$(Active) \
              %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)"
     sleep .25
-done | lemonbar -p -g 1338x23+12+12 -B $BG -F $FG -f $FONT_1 -f $FONT_2 -f $FONT_3 -f $FONT_4 -f $FONT_5 | sh
+done | lemonbar -p -g 1338x23+12+12 -B $BG -F $FG -f "$FONT_1" -f "$FONT_2" -f "$FONT_3" -f "$FONT_4" -f "$FONT_5" | sh

@@ -9,7 +9,7 @@ Xft.rgba:       rgb
 Xft.dpi:        96
 
 !Fonts
-URxvt.font: xft:Monaco:size=10,xft:Monospace:size=9:antialias=true:hinting=true,xft:FontAwesome:size=9
+URxvt.font: xft:Monaco:size=10,xft:Monospace:size=10
 URxvt.letterSpace: -1
 
 URxvt*transparent: true
