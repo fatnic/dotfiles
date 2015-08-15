@@ -28,12 +28,17 @@ Battery() {
 
     case $BATTERY_STATUS in
            'Charging') BATTERY_ICON="" ;;
-           'Full') BATTERY_ICON="" ;;
+           'Full') BATTERY_ICON="" ;;
+           'Discharging') 
+               if [ $BATTERY_PERCENTAGE -ge 90 ]; then BATTERY_ICON=""; fi
+               if [ $BATTERY_PERCENTAGE -le 89 ]; then BATTERY_ICON=""; fi
+               if [ $BATTERY_PERCENTAGE -le 60 ]; then BATTERY_ICON=""; fi
+               if [ $BATTERY_PERCENTAGE -le 30 ]; then BATTERY_ICON=""; fi
+               if [ $BATTERY_PERCENTAGE -le 10 ]; then BATTERY_ICON=""; fi
+               ;;
     esac
     
-    if [ $BATTERY_PERCENTAGE -lt 11 ] && [ $BATTERY_STATUS == 'Discharging' ]; then BAT_COL="$RED"; fi
-
-    echo "%{F$BAT_COL}%{T4}$BATTERY_ICON%{T-}%{F-} $BATTERY_PERCENTAGE%"
+    echo "%{T5}$BATTERY_ICON%{T-} $BATTERY_PERCENTAGE%"
 }
 
 Volume() {

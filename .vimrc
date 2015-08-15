@@ -11,7 +11,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 
-"Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
 Plugin 'jiangmiao/auto-pairs'
 
