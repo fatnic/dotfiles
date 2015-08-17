@@ -42,12 +42,13 @@ Battery() {
 }
 
 Volume() {
-    AUDIO_VOLUME=$(awk -F"[][]" '/dB/ { print $2  }' <(amixer sget Master))
-    AUDIO_STATUS=$(amixer get Master | tail -n 1 | cut -d" " -f 8 | tr -d '[]')
+    # Don't forget to install pulseaudio
+    AUDIO_VOLUME=$(pactl list sinks | grep "Volume: front-left" | awk '{print $5}')
+    AUDIO_STATUS=$(pactl list sinks | grep "Mute:" | awk '{print $2}')
     VOL_COL="$FG"
     VOL_ICON=""
-    if [ $AUDIO_STATUS == "off" ]; then AUDIO_VOLUME=""; VOL_ICON=""; fi
-    echo "%{A:amixer set Master toggle:}%{A4:amixer set Master 1db+:}%{A5:amixer set Master 1db-:}%{F$VOL_COL}%{T5}$VOL_ICON%{T-}%{F-} $AUDIO_VOLUME%{A}%{A}%{A}"
+    if [ $AUDIO_STATUS == "yes" ]; then AUDIO_VOLUME=""; VOL_ICON=""; fi
+    echo "%{A:pactl set-sink-mute 0 toggle:}%{A4:pactl set-sink-volume 0 +1%:}%{A5:pactl set-sink-volume 0 -1%:}%{F$VOL_COL}%{T5}$VOL_ICON%{T-}%{F-} $AUDIO_VOLUME%{A}%{A}%{A}"
 }
 
 WiFi() {
