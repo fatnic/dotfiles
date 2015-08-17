@@ -1,7 +1,7 @@
 BG="#00151515"
 FG="#eeffffff"
 
-ACTIVE="#df7967"
+ACTIVE="#82e066"
 INACTIVE="#777777"
 OCCUPIED="#eeffffff"
 
