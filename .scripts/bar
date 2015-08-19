@@ -34,11 +34,11 @@ Battery() {
                if [ $BATTERY_PERCENTAGE -le 89 ]; then BATTERY_ICON=""; fi
                if [ $BATTERY_PERCENTAGE -le 60 ]; then BATTERY_ICON=""; fi
                if [ $BATTERY_PERCENTAGE -le 30 ]; then BATTERY_ICON=""; fi
-               if [ $BATTERY_PERCENTAGE -le 10 ]; then BATTERY_ICON=""; fi
+               if [ $BATTERY_PERCENTAGE -le 10 ]; then BATTERY_ICON=""; BAT_COL="$RED"; fi
                ;;
     esac
     
-    echo "%{T5}$BATTERY_ICON%{T-} $BATTERY_PERCENTAGE%"
+    echo "%{F$BAT_COL}%{T5}$BATTERY_ICON%{T-}%{F-} $BATTERY_PERCENTAGE%"
 }
 
 Volume() {
@@ -93,7 +93,7 @@ Notifications() {
 
     # Check for Arch updates
     UP_COUNT=$(cat ~/.update_count | cut -d ";" -f 2)
-    icon_update=""
+    icon_update=""
     if [ ! $UP_COUNT == 0 ]; then 
         NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e pacaur -Syu:}%{F$FG}%{T5}$icon_update%{T-}%{F-}%{A}$NOTIFICATIONS"; 
     fi
