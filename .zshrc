@@ -19,7 +19,6 @@ alias la="ls -lAhG"
 alias ld="ls -ld */"
 
 alias yt="youtube-dl -f best"
-alias t="tmux"
 alias tran="transmission-remote-cli"
 
 alias mkvenv="virtualenv .venv && activate"

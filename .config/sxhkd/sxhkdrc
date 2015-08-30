@@ -90,10 +90,10 @@ super + Return
 	bspc desktop -f code && urxvt
 
 super + space
-	dmenu_run
+	dmenu_runner
 
 super + BackSpace
-    rofi_session
+    dmenu_session
 
 super + b
     firefox

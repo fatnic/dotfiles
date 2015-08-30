@@ -17,8 +17,6 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'godlygeek/tabular'
 
-"Plugin 'valloric/youcompleteme' " .vim/bundle --clang-completer
-
 call vundle#end()
 " END VUNDLE
 

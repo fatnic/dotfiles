@@ -1,0 +1,12 @@
+#!/bin/bash
+
+choice=$(echo -e "lock\nexit\nshutdown\nreboot\nscreenshot" | dmenu -x 90 -y 15 -w 300 -o 0.9 -p ">" -dim 0.8 -sb "#7f79a9")
+
+case $choice in 
+    screenshot) sleep 1 && scrot & ;;
+    lock) ;;
+    exit) pkill -15 bar; bspc quit & ;;
+    shutdown) systemctl poweroff & ;;
+    reboot) systemctl reboot & ;;
+esac
+

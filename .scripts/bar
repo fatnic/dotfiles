@@ -48,7 +48,7 @@ Volume() {
     VOL_COL="$FG"
     VOL_ICON=""
     if [ $AUDIO_STATUS == "yes" ]; then AUDIO_VOLUME=""; VOL_ICON=""; fi
-    echo "%{A:pactl set-sink-mute 0 toggle:}%{A4:pactl set-sink-volume 0 +1%:}%{A5:pactl set-sink-volume 0 -1%:}%{F$VOL_COL}%{T5}$VOL_ICON%{T-}%{F-} $AUDIO_VOLUME%{A}%{A}%{A}"
+    echo "%{A:pactl set-sink-mute 0 toggle:}%{A4:pactl set-sink-volume 0 +5%:}%{A5:pactl set-sink-volume 0 -5%:}%{F$VOL_COL}%{T5}$VOL_ICON%{T-}%{F-} $AUDIO_VOLUME%{A}%{A}%{A}"
 }
 
 WiFi() {
@@ -124,6 +124,6 @@ while true
 do
     echo -e "%{l}$(Desktops) \
              %{c}$(Active) \
-             %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)  $(CPUTemp)      $(TimeDate)"
+             %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)    $(TimeDate)"
     sleep .25
 done | lemonbar -p -g 1338x23+12+12 -B $BG -F $FG -f "$FONT_1" -f "$FONT_2" -f "$FONT_3" -f "$FONT_4" -f "$FONT_5" | sh
