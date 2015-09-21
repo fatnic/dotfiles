@@ -55,7 +55,7 @@ WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$FG"
     if [ -z "$WIFI_SSID" ]; then WIFI_COL="$INACTIVE"; fi
-    echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T-}%{F-}%{A}"
+    echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T-}%{F-}%{A} $WIFI_SSID"
 }
 
 CPUTemp() {
@@ -99,15 +99,15 @@ Notifications() {
     fi
 
     # Any active torrents?
-    #TORRENTS=$(cat /home/$CURRENT_USER/.torrentind)
-    #TORRENT_COLOR="$INACTIVE"
-    #ACTIVE_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 1)
-    #COMPLETED_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 2)
-    #if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$FG"; fi
-    #if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
-    #if [ $ACTIVE_TORRENTS -gt 0 ]; then 
-    #    NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e transmission-remote-cli:}%{F$TORRENT_COLOR}%{T5}%{T-}%{F-}%{A}$NOTIFICATIONS";
-    #fi
+    TORRENTS=$(cat /home/$CURRENT_USER/.torrentind)
+    TORRENT_COLOR="$INACTIVE"
+    ACTIVE_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 1)
+    COMPLETED_TORRENTS=$(echo "$TORRENTS" | cut -d':' -f 2)
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then TORRENT_COLOR="$FG"; fi
+    if [ $COMPLETED_TORRENTS -gt 0 ]; then TORRENT_COLOR="$GREEN" ; fi
+    if [ $ACTIVE_TORRENTS -gt 0 ]; then 
+        NOTIFICATIONS="$GAP%{A:bspc desktop -f download; urxvt -e transmission-remote-cli:}%{F$TORRENT_COLOR}%{T5}%{T-}%{F-}%{A}$NOTIFICATIONS";
+    fi
 
     # Dropbox
     DROPBOX_STATUS=$(dropbox-cli status | wc -l)

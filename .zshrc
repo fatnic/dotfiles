@@ -19,7 +19,7 @@ alias la="ls -lAhG"
 alias ld="ls -ld */"
 
 alias yt="youtube-dl -f best"
-alias tran="transmission-remote-cli"
+alias trans="transmission-remote-cli"
 
 alias mkvenv="virtualenv .venv && activate"
 alias activate="source .venv/bin/activate"

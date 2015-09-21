@@ -17,7 +17,7 @@ compton &
 devmon &
 dunst &
 
-#torrent_check.py &
+torrent_check.py &
 
 sh ~/.fehbg
 
