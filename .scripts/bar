@@ -55,7 +55,7 @@ WiFi() {
     WIFI_SSID=$(iwgetid -r)
     WIFI_COL="$FG"
     if [ -z "$WIFI_SSID" ]; then WIFI_COL="$INACTIVE"; fi
-    echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T-}%{F-}%{A} $WIFI_SSID"
+    echo "%{A:urxvt -e sudo wifi-menu:}%{F$WIFI_COL}%{T5}%{T-}%{F-}%{A}"
 }
 
 CPUTemp() {
@@ -122,8 +122,7 @@ Notifications() {
 
 while true
 do
-    echo -e "%{l}$(Desktops) \
-             %{c}$(Active) \
+    echo -e "%{l}$(Desktops)    $(Active) \
              %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)    $(TimeDate)"
     sleep .25
 done | lemonbar -p -g 1338x23+12+12 -B $BG -F $FG -f "$FONT_1" -f "$FONT_2" -f "$FONT_3" -f "$FONT_4" -f "$FONT_5" | sh

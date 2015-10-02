@@ -23,5 +23,6 @@ bspc rule -a libreoffice follow=on desktop=misc fullscreen=on
 bspc rule -a GameWindow floating=on
 
 bspc rule -a QtCreator follow=on desktop=code 
+bspc rule -a sublime_text follow=on desktop=code 
 
 bar &
