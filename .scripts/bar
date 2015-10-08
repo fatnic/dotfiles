@@ -13,7 +13,17 @@ FONT_5="FontAwesome:style=Regular:size=10"
 source bar-colors.sh
 
 Active() {
-    xtitle | head -c 100
+    TITLE=$(xtitle | head -c 100)
+    WINDOW_ID=$(bspc query --windows --window focused)
+    WINDOW_CLASS=$(xprop -root WM_CLASS -id $WINDOW_ID | cut -d \" -f 2)
+    TITLE_ICON=""
+    case $WINDOW_CLASS in
+        'Navigator') TITLE_ICON="" ;;
+        'urxvt') TITLE_ICON="" ;;
+        'gimp') TITLE_ICON="";;
+        'gl') TITLE_ICON="" ;;
+    esac
+    if [ ! "$WINDOW_CLASS" == "" ]; then echo "%{T5}$TITLE_ICON%{T-}  $TITLE"; fi
 }
 
 TimeDate() { 
@@ -122,7 +132,7 @@ Notifications() {
 
 while true
 do
-    echo -e "%{l}$(Desktops)    $(Active) \
+    echo -e "%{l}$(Desktops)      $(Active) \
              %{r}$(Notifications)  $(WiFi)  $(Volume)  $(Battery)    $(TimeDate)"
     sleep .25
 done | lemonbar -p -g 1338x23+12+12 -B $BG -F $FG -f "$FONT_1" -f "$FONT_2" -f "$FONT_3" -f "$FONT_4" -f "$FONT_5" | sh

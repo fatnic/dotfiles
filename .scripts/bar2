@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Requires lemonbar-xft-git from AUR
+
+FONT_1="FontAwesome:style=Regular:size=5"
+
+source bar-colors.sh
+
+Desktops() {
+    DESKTOP_STATUS=$(bspc control --get-status | tr ":" "\n" | sed '1d' | head --lines=-1)
+    DESKTOP_INFO=""
+    for desktop in $DESKTOP_STATUS; do
+        DESKTOP_NAME=$(echo "$desktop" | cut -c2-)
+        DESKTOP_ICON="    ";
+        case $desktop in
+            O*|F*) DESKTOP_COLOUR="$ACTIVE" ;;
+            o*) DESKTOP_COLOUR="$OCCUPIED" ;;
+            f*) DESKTOP_COLOUR="$INACTIVE" ;;
+        esac
+        DESKTOP_INFO="$DESKTOP_INFO  %{F$DESKTOP_COLOUR}%{T1}$DESKTOP_ICON%{T-}%{F-}"
+    done
+
+    echo "$DESKTOP_INFO"
+}
+
+while true
+do
+    echo -e "%{l}$(Desktops)"
+    sleep .25
+done | lemonbar -p -g 200x23+16+24 -B $BG -F $FG -f "$FONT_1" | sh

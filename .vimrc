@@ -10,12 +10,12 @@ Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-
-Plugin 'ervandew/supertab'
+Plugin 'dbakker/vim-projectroot'
 Plugin 'tpope/vim-commentary'
 Plugin 'jiangmiao/auto-pairs'
-
 Plugin 'godlygeek/tabular'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 call vundle#end()
 " END VUNDLE
@@ -58,7 +58,7 @@ set noswapfile
 set viminfo=
 
 " gf seaches aditional folders
-let &path.="src/include,/usr/include/AL,"
+let &path.="src/include,/usr/include/AL,include/,src"
 
 " ***********************************************
 "              KEYBOARD MAPPINGS 
@@ -68,7 +68,7 @@ let &path.="src/include,/usr/include/AL,"
 let mapleader=","
 
 " Run current file in python
-nmap <leader>r :!python %<cr>
+nnoremap <leader>r :ProjectRootCD<cr>:!make && make run<cr>
 
 "" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
@@ -105,16 +105,18 @@ let g:airline_right_sep=''
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
-"let g:airline_powerline_fonts = 1
-
-" **** SUPERTAB ****
-
-" Supertab from top to bottom
-let g:SuperTabDefaultCompletionType = '<c-n>'
 
 " **** Ctrl-P ****
 "
 " Ignore directories
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db,*.o
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.venv']
+
+" ***** YouCompleteMe *****
+autocmd CompleteDone * pclose
+let g:ycm_confirm_extra_conf = 0
+map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
+map <F9> :YcmCompleter FixIt<CR>
+highlight YcmErrorSection gui=underline
+highlight YcmErrorLine guibg=#3f0000
