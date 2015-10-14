@@ -18,6 +18,8 @@ alias rm="trash-put"
 alias la="ls -lAhG"
 alias ld="ls -ld */"
 
+alias vi="vim"
+
 alias yt="youtube-dl -f best"
 alias trans="transmission-remote-cli"
 

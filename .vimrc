@@ -8,10 +8,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'sjl/badwolf'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'dbakker/vim-projectroot'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 Plugin 'Valloric/YouCompleteMe'
@@ -29,7 +32,7 @@ autocmd! bufwritepost .vimrc source %
 
 set t_Co=256
 set t_ut=
-colorscheme Monokai
+colorscheme badwolf
 
 set number
 set numberwidth=3
@@ -120,3 +123,16 @@ map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 map <F9> :YcmCompleter FixIt<CR>
 highlight YcmErrorSection gui=underline
 highlight YcmErrorLine guibg=#3f0000
+
+" ********** projectroot ***********
+function! <SID>AutoProjectRootCD()
+  try
+    if &ft != 'help'
+      ProjectRootCD
+    endif
+  catch
+    " Silently ignore invalid buffers
+  endtry
+endfunction
+
+autocmd BufEnter * call <SID>AutoProjectRootCD()

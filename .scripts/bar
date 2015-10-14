@@ -22,6 +22,7 @@ Active() {
         'urxvt') TITLE_ICON="" ;;
         'gimp') TITLE_ICON="";;
         'gl') TITLE_ICON="" ;;
+        'tiled') TITLE_ICON="";;
     esac
     if [ ! "$WINDOW_CLASS" == "" ]; then echo "%{T5}$TITLE_ICON%{T-}  $TITLE"; fi
 }
