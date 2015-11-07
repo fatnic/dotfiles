@@ -19,6 +19,9 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'freitass/todo.txt-vim'
+
+
 
 call vundle#end()
 " END VUNDLE
@@ -136,3 +139,13 @@ function! <SID>AutoProjectRootCD()
 endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
+
+
+function! IncludeGuard()
+  let basename = expand("%:t:r")
+  let includeGuard = '_' . toupper(basename) . '_HPP'
+  call append(0, "#pragma once")
+  call append(1, "#ifndef " . includeGuard)
+  call append(2, "#define " . includeGuard)
+  call append(line("$"), "#endif /* !" . includeGuard . " */")
+endfunction

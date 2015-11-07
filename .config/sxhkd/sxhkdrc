@@ -98,6 +98,9 @@ super + space
 super + BackSpace
     dmenu_session
 
+# super + b
+#     google-chrome-beta
+
 super + b
     firefox
 
