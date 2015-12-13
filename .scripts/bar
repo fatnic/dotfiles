@@ -93,7 +93,8 @@ Desktops() {
             download) DESKTOP_ICON="" ;;
             *) DESKTOP_ICON="" ;; 
         esac
-        DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T-}%{F-}%{A}"
+        #DESKTOP_INFO="$DESKTOP_INFO  %{A:bspc desktop -f $DESKTOP_NAME:}%{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T-}%{F-}%{A}"
+        DESKTOP_INFO="$DESKTOP_INFO  %{F$DESKTOP_COLOUR}%{T5}$DESKTOP_ICON%{T-}%{F-}"
     done
 
     echo "$DESKTOP_INFO"
