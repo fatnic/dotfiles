@@ -19,9 +19,6 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'freitass/todo.txt-vim'
-
-
 
 call vundle#end()
 " END VUNDLE

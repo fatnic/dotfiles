@@ -19,7 +19,8 @@ dunst &
 
 torrent_check.py &
 
-sh ~/.fehbg
+#sh ~/.fehbg
+randomwallpaper
 
 sxhkd &
 exec bspwm

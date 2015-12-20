@@ -22,6 +22,8 @@ alias vi="vim"
 
 alias yt="youtube-dl -f best"
 alias trans="transmission-remote-cli"
+alias youtube="mpv --ytdl-format 22"
+alias tvod="mpv --ytdl-format Source --hls-bitrate=max"
 
 alias mkvenv="virtualenv .venv && activate"
 alias activate="source .venv/bin/activate"
