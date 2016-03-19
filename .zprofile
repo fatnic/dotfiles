@@ -47,7 +47,9 @@ path=(
   /usr/bin/X11
   /home/dave/.scripts
   /home/dave/.bin
-  /root/.gem/ruby/2.2.0/bin
+  /home/dave/.npm-packages/bin
+  /home/dave/.rbenv/bin
+  /home/dave/.rbenv/plugins/ruby-build/bin
   $path
 )
 
