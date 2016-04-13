@@ -1,52 +1,6 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# Load all files from ~/.zshrc.d
+if [[ -d $HOME/.zshrc.d ]]; then
+	for file in $HOME/.zshrc.d/*; do
+		source $file
+	done
 fi
-
-# Customize to your needs...
-
-alias rm="trash-put"
-alias la="ls -lAhG"
-alias ld="ls -ld */"
-
-alias vi="vim"
-
-alias yt="youtube-dl -f best"
-alias trans="transmission-remote-cli"
-alias youtube="mpv --ytdl-format 22"
-#alias tvod="mpv --ytdl-format source --hls-bitrate=max"
-alias tvod="mpv --hls-bitrate=max"
-
-alias mkvenv="virtualenv .venv && activate"
-alias activate="source .venv/bin/activate"
-
-extract () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xvjf $1    ;;
-      *.tar.gz)    tar xvzf $1    ;;
-      *.tar.xz)    tar xvJf $1    ;;
-      *.bz2)       bunzip2 $1     ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1      ;;
-      *.tar)       tar xvf $1     ;;
-      *.tbz2)      tar xvjf $1    ;;
-      *.tgz)       tar xvzf $1    ;;
-      *.zip)       unzip $1       ;;
-      *.Z)         uncompress $1  ;;
-      *.7z)        7z x $1        ;;
-      *.xz)        unxz $1        ;;
-      *.exe)       cabextract $1  ;;
-      *)           echo "\`$1': unrecognized file compression" ;;
-    esac
-  else
-    echo "\`$1' is not a valid file"
-  fi
-}

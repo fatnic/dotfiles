@@ -17,7 +17,7 @@
 	prompt = false
 [push]
     # default = simple
-[url "https://"]
-	insteadOf = git://
+#[url "https://"]
+#	insteadOf = git://
 [push]
 	default = matching

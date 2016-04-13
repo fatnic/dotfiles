@@ -17,6 +17,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-endwise'
 
 call vundle#end()
 " END VUNDLE
@@ -42,10 +44,10 @@ set autochdir
 
 set nowrap
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
-set softtabstop=4
+set softtabstop=2
 
 set hlsearch
 set incsearch
@@ -100,12 +102,15 @@ nmap <leader>bl :ls<CR>
 " **** AIRLINE ****
 "
 " Don't show seperators
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
+
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
+" Use powerline fonts
+let g:airline_powerline_fonts = 1
 
 " **** Ctrl-P ****
 "
@@ -114,13 +119,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db,*.o
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.venv']
 
-" ***** YouCompleteMe *****
-autocmd CompleteDone * pclose
-let g:ycm_confirm_extra_conf = 0
-map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
-map <F9> :YcmCompleter FixIt<CR>
-highlight YcmErrorSection gui=underline
-highlight YcmErrorLine guibg=#3f0000
 
 " ********** projectroot ***********
 function! <SID>AutoProjectRootCD()
