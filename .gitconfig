@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-	askpass = 
+	askpass =
 [user]
 	email = fatnic388@gmail.com
 	name = Dave Nicholson
@@ -16,7 +16,7 @@
 [difftool]
 	prompt = false
 [push]
-    # default = simple
+# default = simple
 #[url "https://"]
 #	insteadOf = git://
 [push]
