@@ -1,5 +1,4 @@
-#player=mpv --cache 2048
-#
-player=vlc
+player=mpv --cache 2048
+#player=vlc
 hds-segment-threads=10
 hls-segment-threads=10
