@@ -36,6 +36,7 @@ colorscheme badwolf
 
 set number
 set numberwidth=3
+set relativenumber
 
 set laststatus=2
 set encoding=utf-8
@@ -43,6 +44,7 @@ set encoding=utf-8
 set autochdir
 
 set nowrap
+set scrolloff=2
 
 set tabstop=2
 set shiftwidth=2
@@ -70,8 +72,8 @@ let &path.="src/include,/usr/include/AL,include/,src"
 " Change the leader to , 
 let mapleader=","
 
-" Run current file in python
-nnoremap <leader>r :ProjectRootCD<cr>:!make && make run<cr>
+" no need to shift
+nnoremap ; :
 
 "" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
@@ -133,12 +135,3 @@ endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
 
-
-function! IncludeGuard()
-  let basename = expand("%:t:r")
-  let includeGuard = '_' . toupper(basename) . '_HPP'
-  call append(0, "#pragma once")
-  call append(1, "#ifndef " . includeGuard)
-  call append(2, "#define " . includeGuard)
-  call append(line("$"), "#endif /* !" . includeGuard . " */")
-endfunction
