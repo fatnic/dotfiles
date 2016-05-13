@@ -75,6 +75,9 @@ let mapleader=","
 " no need to shift
 nnoremap ; :
 
+" save and run ruby
+nmap <leader>r :w<cr>:!ruby %<cr>
+
 "" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
 
