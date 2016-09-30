@@ -20,6 +20,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-endwise'
 
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+
 call vundle#end()
 " END VUNDLE
 
@@ -64,6 +67,8 @@ set viminfo=
 
 " gf seaches aditional folders
 let &path.="src/include,/usr/include/AL,include/,src"
+
+nnoremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " ***********************************************
 "              KEYBOARD MAPPINGS 
@@ -124,6 +129,12 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db,*.o
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.venv']
 
+" ***** YCM *****************
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_filepath_completion_use_working_dir = 1
 
 " ********** projectroot ***********
 function! <SID>AutoProjectRootCD()
