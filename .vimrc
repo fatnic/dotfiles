@@ -19,6 +19,9 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-endwise'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'embear/vim-localvimrc'
+Plugin 'tpope/vim-dispatch'
 
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'rdnetto/YCM-Generator'
@@ -89,6 +92,8 @@ nnoremap <Cr> :nohlsearch<Cr>
 " Toggle NERDTree
 nmap <C-f> :NERDTreeToggle<Cr>
 
+
+
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
@@ -121,6 +126,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'"
 " Use powerline fonts
 let g:airline_powerline_fonts = 1
+
+" ***** localvimrc ****
+let g:localvimrc_ask = 0
+let g:localvimrc_persistence = 2
 
 " **** Ctrl-P ****
 "
