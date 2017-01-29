@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+
+require 'rainbow'
+require 'launchy'
+
+require_relative 'kickparse'
+
+REMOTE_USERNAME = "mediabox"
+REMOTE_HOST = "192.168.0.44"
+REMOTE_PASSWORD = 'tobie2003'
+REMOTE_FILEPATH = "/home/mediabox/add2deluge/magnets.txt"
+
+movies = kickparse()
+
+puts "\n"
+puts Rainbow("KickAss movies - Latest\n").blue.bright.underline
+
+movies.each_with_index do |movie, i|
+    puts "[#{i+1}] #{movie[:title]} (#{movie[:filesize]})"
+end
+
+puts "\n"
+print Rainbow("d/l/v/q/h >> ").yellow
+
+while (choice = gets.chomp.downcase) != 'q'
+
+    option = choice[1, choice.length].to_i
+
+    case choice[0]
+
+    when 'd'
+        if option != 0 and movie = movies[option-1] then
+            puts Rainbow("Adding ").green + Rainbow(movie[:title]).green.bright + Rainbow(" to Deluge queue").green
+            system "echo \"#{movie[:magnet]}\" | sshpass -p '#{REMOTE_PASSWORD}' ssh #{REMOTE_USERNAME}@#{REMOTE_HOST} \"cat >> #{REMOTE_FILEPATH}\""
+        else
+            puts Rainbow("Unrecognised choice").red.bright
+        end
+
+    when 'l'
+        movies.each_with_index do |movie, i|
+            puts "[#{i+1}] #{movie[:title]} (#{movie[:filesize]})"
+        end
+
+    when 'v'
+        if option != 0 and movie = movies[option-1] then
+            puts Rainbow("Viewing ").green + Rainbow(movie[:title]).green.bright + Rainbow(" in your browser").green
+            Launchy.open(movie[:link])
+        else
+            puts Rainbow("Unrecognised choice").red.bright
+        end
+    when 'h'
+        puts "This is the help file... useful?\n"
+    else
+        puts Rainbow("Unrecognised command...").red.bright
+    end
+
+    puts "\n"
+    print Rainbow("d/v/q/h >> ").yellow
+end
+

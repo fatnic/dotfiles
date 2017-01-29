@@ -16,6 +16,6 @@
 [difftool]
 	prompt = false
 [push]
- default = simple
+    default = simple
 [push]
-	default = matching
+    default = matching

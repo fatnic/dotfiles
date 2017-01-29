@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'sjl/badwolf'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'dbakker/vim-projectroot'
@@ -20,11 +19,12 @@ Plugin 'godlygeek/tabular'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-endwise'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'embear/vim-localvimrc'
 Plugin 'tpope/vim-dispatch'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'yggdroot/indentline'
 
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'rdnetto/YCM-Generator'
+" -- color theme -- 
+Plugin 'sjl/badwolf'
 
 call vundle#end()
 " END VUNDLE
@@ -85,6 +85,7 @@ nnoremap ; :
 
 autocmd FileType ruby nmap <leader>r :w<cr>:!ruby %<cr>
 autocmd FileType python nmap <leader>r :w<cr>:!python %<cr>
+autocmd FileType lua nmap <leader>r :w<cr>:!lua %<cr>
 
 "" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
@@ -145,6 +146,9 @@ let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_filepath_completion_use_working_dir = 1
 
+" ******** Indent colours ******
+let g:indentLine_color_term = 241
+
 " ********** projectroot ***********
 function! <SID>AutoProjectRootCD()
   try
@@ -157,4 +161,3 @@ function! <SID>AutoProjectRootCD()
 endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
-
