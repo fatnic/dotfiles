@@ -10,6 +10,8 @@ REMOTE_HOST = "192.168.0.44"
 REMOTE_PASSWORD = 'tobie2003'
 REMOTE_FILEPATH = "/home/mediabox/add2deluge/magnets.txt"
 
+PROMPT = "d/l/v/h/q >> "
+
 movies = kickparse()
 
 puts "\n"
@@ -20,7 +22,7 @@ movies.each_with_index do |movie, i|
 end
 
 puts "\n"
-print Rainbow("d/l/v/q/h >> ").yellow
+print Rainbow(PROMPT).yellow
 
 while (choice = gets.chomp.downcase) != 'q'
 
@@ -48,13 +50,15 @@ while (choice = gets.chomp.downcase) != 'q'
         else
             puts Rainbow("Unrecognised choice").red.bright
         end
+
     when 'h'
         puts "This is the help file... useful?\n"
+
     else
         puts Rainbow("Unrecognised command...").red.bright
     end
 
     puts "\n"
-    print Rainbow("d/v/q/h >> ").yellow
+    print Rainbow(PROMPT).yellow
 end
 

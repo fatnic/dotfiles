@@ -21,7 +21,7 @@ end
 def get_links pagenum
     movies = []
 
-    doc = Nokogiri::HTML(open("http://#{BASE_URL}/movies/#{pagenum}/"))
+    doc = Nokogiri::HTML(open("https://#{BASE_URL}/movies/#{pagenum}/"))
     tbl_movies = doc.css("table")[1]
     tbl_movies.css('tr').each do |row|
 
