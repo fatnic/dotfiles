@@ -11,7 +11,7 @@ Xft.dpi:        96
 !Fonts
 URxvt.font: xft:Monaco:size=10,xft:Monospace:size=10,xft:TerminessPowerline:size=12
 URxvt.boldFont: xft:Monaco:style=Bold:size=10
-URxvt.letterSpace: -1
+! URxvt.letterSpace: -1
 
 URxvt*transparent: true
 URxvt*.shading:20

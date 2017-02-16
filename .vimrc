@@ -22,6 +22,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-dispatch'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'yggdroot/indentline'
+Plugin 'mattn/emmet-vim'
 
 " -- color theme -- 
 Plugin 'sjl/badwolf'

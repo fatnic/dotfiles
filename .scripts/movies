@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# Requires sshpass to be installed
+
 require 'rainbow'
 require 'launchy'
 
@@ -8,7 +10,7 @@ require_relative 'kickparse'
 REMOTE_USERNAME = "mediabox"
 REMOTE_HOST = "192.168.0.44"
 REMOTE_PASSWORD = 'tobie2003'
-REMOTE_FILEPATH = "/home/mediabox/add2deluge/magnets.txt"
+REMOTE_FILEPATH = "/home/mediabox/kickapoo/magnets.txt"
 
 PROMPT = "d/l/v/h/q >> "
 
