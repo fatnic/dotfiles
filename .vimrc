@@ -23,6 +23,9 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'yggdroot/indentline'
 Plugin 'mattn/emmet-vim'
+Plugin 'junegunn/fzf', { 'dir' : '~/.fzf', 'do' : './install --all' }
+
+" Plugin 'tbastos/vim-lua'
 
 " -- color theme -- 
 Plugin 'sjl/badwolf'
@@ -39,11 +42,12 @@ autocmd! bufwritepost .vimrc source %
 
 set t_Co=256
 set t_ut=
-colorscheme badwolf
+colorscheme gruvbox
+set background=dark
 
 set number
 set numberwidth=3
-set relativenumber
+" set relativenumber
 
 set laststatus=2
 set encoding=utf-8
@@ -162,3 +166,7 @@ function! <SID>AutoProjectRootCD()
 endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
+
+" ********** highlight no space after comma *****
+highlight SqushedCommas ctermbg=red guibg=red
+match SqushedCommas /, \@!/
