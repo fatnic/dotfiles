@@ -25,6 +25,8 @@ Plugin 'yggdroot/indentline'
 Plugin 'mattn/emmet-vim'
 Plugin 'junegunn/fzf', { 'dir' : '~/.fzf', 'do' : './install --all' }
 
+Plugin 'davisdude/vim-love-docs'
+
 " Plugin 'tbastos/vim-lua'
 
 " -- color theme -- 
