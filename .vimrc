@@ -22,12 +22,13 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-dispatch'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'yggdroot/indentline'
-Plugin 'mattn/emmet-vim'
-Plugin 'junegunn/fzf', { 'dir' : '~/.fzf', 'do' : './install --all' }
 
-Plugin 'davisdude/vim-love-docs'
-
-" Plugin 'tbastos/vim-lua'
+Plugin 'PeterRincker/vim-argumentative'
+Plugin 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
+Plugin 'wavded/vim-stylus'
+Plugin 'alvan/vim-closetag'
 
 " -- color theme -- 
 Plugin 'sjl/badwolf'
@@ -75,10 +76,9 @@ set noswapfile
 
 set viminfo=
 
-" gf seaches aditional folders
-let &path.="src/include,/usr/include/AL,include/,src"
-
-nnoremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+" Keep selection after indenting
+vnoremap < <gv
+vnoremap > >gv
 
 " ***********************************************
 "              KEYBOARD MAPPINGS 
@@ -90,9 +90,10 @@ let mapleader=","
 " no need to shift
 nnoremap ; :
 
-autocmd FileType ruby nmap <leader>r :w<cr>:!ruby %<cr>
-autocmd FileType python nmap <leader>r :w<cr>:!python %<cr>
-autocmd FileType lua nmap <leader>r :w<cr>:!lua %<cr>
+autocmd FileType ruby nmap <leader>r :w<cr>:!clear && ruby %<cr>
+autocmd FileType python nmap <leader>r :w<cr>:!clear && python %<cr>
+autocmd FileType lua nmap <leader>r :w<cr>:!love . %<cr>
+autocmd FileType javascript nmap <leader>r :w<cr>:!clear && node %<cr>
 
 "" Disable seach highlights on enter 
 nnoremap <Cr> :nohlsearch<Cr>
@@ -127,7 +128,7 @@ nmap <leader>bl :ls<CR>
 " Don't show seperators
 "let g:airline_left_sep=''
 "let g:airline_right_sep=''
-
+"
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
@@ -142,16 +143,9 @@ let g:localvimrc_persistence = 2
 " **** Ctrl-P ****
 "
 " Ignore directories
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db,*.o
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*.pyc,*.db,*.o,*/node_modules/*
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['.venv']
-
-" ***** YCM *****************
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filepath_completion_use_working_dir = 1
+let g:ctrlp_root_markers = ['.venv','.git']
 
 " ******** Indent colours ******
 let g:indentLine_color_term = 241
@@ -169,6 +163,6 @@ endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
 
-" ********** highlight no space after comma *****
-highlight SqushedCommas ctermbg=red guibg=red
-match SqushedCommas /, \@!/
+let g:vim_json_syntax_conceal = 0
+let g:jsx_ext_required = 0
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.js"
